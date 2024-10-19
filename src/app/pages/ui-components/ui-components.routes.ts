@@ -10,6 +10,8 @@ import { AppFormsComponent } from './forms/forms.component';
 import { AppTablesComponent } from './tables/tables.component';
 import {listingComponent} from './listing/listing.component'
 import { RoomDetailsComponent } from './RoomDetails/RoomDetails.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { AmenityComponent } from './amenity/amenity.component';
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
@@ -25,6 +27,14 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'lists',
         component: AppListsComponent,
+      },
+      {
+        path: 'reviews',
+        component: ReviewsComponent,
+      },
+      {
+        path: 'amenity',
+        component: AmenityComponent,
       },
       {
         path: 'menu',
