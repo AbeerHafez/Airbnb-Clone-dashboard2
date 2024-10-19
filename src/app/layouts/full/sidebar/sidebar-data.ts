@@ -24,6 +24,16 @@ export const navItems: NavItem[] = [
     route: '/ui-components/listing',
   },
   {
+    displayName: 'Reviews',
+    iconName: 'solar:file-text-line-duotone',
+    route: '/ui-components/reviews',
+  },
+  {
+    displayName: 'Amenity',
+    iconName: 'solar:sticker-smile-circle-2-line-duotone',
+    route: '/ui-components/amenity',
+  },
+  {
     displayName: 'Chips',
     iconName: 'solar:danger-circle-line-duotone',
     route: '/ui-components/chips',
