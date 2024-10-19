@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { ListingService } from '../../../services/listing.service'
 import { Listing } from 'src/app/models/listing';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listing',
@@ -28,15 +29,24 @@ export class listingComponent implements OnInit {
   displayedColumns1: string[] = ['assigned', 'name', 'address', 'budget'];
   dataSource1: Listing[] = [];
 
-  constructor(private ListingService: ListingService) {}
+  constructor(private ListingService: ListingService , private router:Router) {}
 
   ngOnInit() {
     this.ListingService.getAllListings().subscribe((data: Listing[]) => {
       this.dataSource1 = data;
       console.log(this.dataSource1);
-      
+
     });
-  }}
+  }
+
+  goToDetails(id:string):void {
+    this.router.navigate(['ui-components/details',id])
+  }
+
+
+
+
+}
 
 // export interface productsData {
 //   id: number;

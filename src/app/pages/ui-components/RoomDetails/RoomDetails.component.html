@@ -1,0 +1,91 @@
+<!-- <div *ngIf="listing">
+<h2>{{listing.title}}</h2>
+<p>{{listing.price}}</p>
+</div>
+
+ -->
+
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <mat-card-title class='text-primary'>Room Details</mat-card-title>
+
+      <ng-container *ngIf="listing">
+        <mat-card-title >
+          {{ listing.title }}
+        </mat-card-title>
+
+        <mat-card class="m-5" style="width: 100%;">
+          <mat-card-header class="p-0 m-0">
+               <div class="d-flex flex-wrap p-2" *ngFor="let photo of listing.photos">
+              <img mat-card-image
+                [src]="photo"
+                alt="room"
+                class="gallery-image"
+              />
+            </div>
+          </mat-card-header>
+
+          <mat-card-content >
+
+            <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
+              category:
+              <span class="text-dark f-w-600">{{listing.category}}</span>
+             </h6>
+
+            <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
+             Description:
+             <span class="text-dark f-w-600">{{ listing.description }}</span>
+            </h6>
+
+            <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
+              price:
+              <span class="text-dark f-w-600">${{ listing.price }}</span>
+             </h6>
+
+             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
+              address:
+              <span class="text-dark f-w-600">{{listing.address.street}},{{listing.address.city}},{{ listing.address.country }}</span>
+             </h6>
+
+             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
+              <span class="text-dark f-w-600">bathrooms: {{ listing.bathrooms }}, bedrooms: {{listing.bedrooms}},beds: {{listing.beds}}</span>
+             </h6>
+
+             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
+              guests: 
+              <span class="text-dark f-w-600"> {{ listing.guests}}</span>
+             </h6>
+
+             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
+              owner: 
+              <span class="text-dark f-w-600"> {{ listing.owner}}</span>
+             </h6>
+
+            <h6 class="mat-body-1 f-s-16  text-dark f-w-600">
+              {{ listing.location.latitude }}
+            </h6>
+
+            <h6 class="mat-body-1 f-s-16  text-dark f-w-600">
+              {{ listing.location.longitude }}
+            </h6>
+
+          </mat-card-content>
+
+          <mat-card-actions class="m-0">
+              <button class="button-card bg-success" >
+                <mat-icon>add</mat-icon>
+                <span>Add</span>
+              </button>
+              <button class="button-card bg-accent">
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button class="button-card bg-error " >
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+  </mat-card-content>
+</mat-card>

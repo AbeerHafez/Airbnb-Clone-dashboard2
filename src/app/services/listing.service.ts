@@ -15,4 +15,8 @@ constructor(private http: HttpClient) { }
 getAllListings(): Observable<Listing[]> {
   return this.http.get<Listing[]>(this.apiUrl);
 }
+
+getListingByID(id:string):Observable<Listing>{
+  return this.http.get<Listing>(`${this.apiUrl}/${id}`)
+}
 }

@@ -22,7 +22,7 @@ export interface AvailableDate {
 // }
 
 export interface Listing {
-  id: string;  // Assuming MongoDB ObjectId as string
+  _id: string;  // Assuming MongoDB ObjectId as string
   type: string;
   category: string;  // This can be string or ID depending on your backend structure
   address: {
