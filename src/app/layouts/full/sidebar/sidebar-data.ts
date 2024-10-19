@@ -65,8 +65,8 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Chips',
-    iconName: 'solar:danger-circle-line-duotone',
-    route: '/ui-components/chips',
+      iconName: 'solar:danger-circle-line-duotone',
+      route: '/ui-components/chips',
   },
   {
     displayName: 'Lists',
