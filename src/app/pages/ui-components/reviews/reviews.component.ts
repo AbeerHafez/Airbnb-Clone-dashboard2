@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MaterialModule } from 'src/app/material.module';
 import { ReviewsService } from 'src/app/services/reviews.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reviews',
@@ -19,6 +20,7 @@ import { ReviewsService } from 'src/app/services/reviews.service';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+    TranslateModule
   ],
 templateUrl: './reviews.component.html',
   styleUrl: './reviews.component.scss'

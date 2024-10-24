@@ -31,6 +31,14 @@
 
   <!-- <a href="#" target="_blank" mat-flat-button color="primary">Download Free</a> -->
 
+
+  <!-- / languages change -->
+  <li>
+    <select [(ngModel)]="selectedLang" (change)="switchlanguage(selectedLang)">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+  </li>
   <!-- --------------------------------------------------------------- -->
   <!-- profile Dropdown -->
   <!-- --------------------------------------------------------------- -->

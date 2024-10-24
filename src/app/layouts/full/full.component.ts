@@ -13,7 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { HeaderComponent } from './header/header.component';
-
+import { TranslateService } from '@ngx-translate/core';
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
 const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
 const MONITOR_VIEW = 'screen and (min-width: 1024px)';
@@ -56,8 +56,8 @@ export class FullComponent implements OnInit {
     return this.isMobileScreen;
   }
 
-  constructor(private breakpointObserver: BreakpointObserver, private navService: NavService) {
-    
+  constructor(private breakpointObserver: BreakpointObserver, private navService: NavService , private translate:TranslateService) {
+
     this.htmlElement = document.querySelector('html')!;
     this.htmlElement.classList.add('light-theme');
     this.layoutChangesSubscription = this.breakpointObserver
@@ -68,6 +68,8 @@ export class FullComponent implements OnInit {
         this.isMobileScreen = state.breakpoints[MOBILE_VIEW];
 
         this.isContentWidthFixed = state.breakpoints[MONITOR_VIEW];
+
+        this.translate.setDefaultLang('en')
       });
   }
 

@@ -1,8 +1,8 @@
 @if(item.navCap) { @if(item.divider) {
 <span class="sidebar-divider"></span>
 }
-<div mat-subheader class="nav-caption">
-  {{ item.navCap }}
+<div mat-subheader class="nav-caption" *ngIf="item.navCap">
+  {{ item.navCap | translate }}
 </div>
 } @else {
 <a

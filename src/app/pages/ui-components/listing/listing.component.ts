@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ListingService } from '../../../services/listing.service'
 import { Listing } from 'src/app/models/listing';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-listing',
@@ -22,6 +23,8 @@ import { Router } from '@angular/router';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+    TranslateModule,
+
   ],
    templateUrl: './listing.component.html',
 })
@@ -43,6 +46,18 @@ export class listingComponent implements OnInit {
     this.router.navigate(['ui-components/details',id])
   }
 
+  deleteroom(id:string):void{
+    if(confirm('Are you sure you want to delete this listing?')){
+      this.ListingService.deleteListing(id).subscribe(()=>{
+        alert('listing deleted successfully')
+        this.dataSource1 = this.dataSource1.filter(listing =>listing._id !== id)
+      }, error=>{
+      console.error('error deleting listing',error);
+      alert('There was an error deleting the listing')
+
+    })
+    }
+  }
 
 
 

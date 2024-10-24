@@ -2,7 +2,7 @@ import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
   {
-    navCap: 'Home',
+    navCap: 'home',
   },
   {
     displayName: 'Dashboard',
@@ -22,6 +22,11 @@ export const navItems: NavItem[] = [
     displayName: 'listing',
     iconName: 'solar:archive-minimalistic-line-duotone',
     route: '/ui-components/listing',
+  },
+  {
+    displayName:'category',
+    iconName:'solar:danger-circle-line-duotone',
+    route:'/ui-components/category'
   },
   // {
   //   displayName: 'Chips',
@@ -63,36 +68,36 @@ export const navItems: NavItem[] = [
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
     route: '/ui-components/amenity',
   },
-  {
-    displayName: 'Chips',
-    iconName: 'solar:danger-circle-line-duotone',
-    route: '/ui-components/chips',
-  },
-  {
-    displayName: 'Lists',
-    iconName: 'solar:bookmark-square-minimalistic-line-duotone',
-    route: '/ui-components/lists',
-  },
-  {
-    displayName: 'Menu',
-    iconName: 'solar:file-text-line-duotone',
-    route: '/ui-components/menu',
-  },
-  {
-    displayName: 'Tooltips',
-    iconName: 'solar:text-field-focus-line-duotone',
-    route: '/ui-components/tooltips',
-  },
-  {
-    displayName: 'Forms',
-    iconName: 'solar:file-text-line-duotone',
-    route: '/ui-components/forms',
-  },
-  {
-    displayName: 'Tables',
-    iconName: 'solar:tablet-line-duotone',
-    route: '/ui-components/tables',
-  },
+  // {
+  //   displayName: 'Chips',
+  //   iconName: 'solar:danger-circle-line-duotone',
+  //   route: '/ui-components/chips',
+  // },
+  // {
+  //   displayName: 'Lists',
+  //   iconName: 'solar:bookmark-square-minimalistic-line-duotone',
+  //   route: '/ui-components/lists',
+  // },
+  // {
+  //   displayName: 'Menu',
+  //   iconName: 'solar:file-text-line-duotone',
+  //   route: '/ui-components/menu',
+  // },
+  // {
+  //   displayName: 'Tooltips',
+  //   iconName: 'solar:text-field-focus-line-duotone',
+  //   route: '/ui-components/tooltips',
+  // },
+  // {
+  //   displayName: 'Forms',
+  //   iconName: 'solar:file-text-line-duotone',
+  //   route: '/ui-components/forms',
+  // },
+  // {
+  //   displayName: 'Tables',
+  //   iconName: 'solar:tablet-line-duotone',
+  //   route: '/ui-components/tables',
+  // },
   {
     navCap: 'Auth',
     divider: true

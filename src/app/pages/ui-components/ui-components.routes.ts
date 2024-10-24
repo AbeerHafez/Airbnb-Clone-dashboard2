@@ -12,6 +12,7 @@ import {listingComponent} from './listing/listing.component'
 import { RoomDetailsComponent } from './RoomDetails/RoomDetails.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AmenityComponent } from './amenity/amenity.component';
+import { CategoryComponent } from './category/category.component'
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
@@ -59,6 +60,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path:'details/:id' ,
         component:RoomDetailsComponent,
+      },
+      {
+        path:'category',
+        component:CategoryComponent,
       }
 
 

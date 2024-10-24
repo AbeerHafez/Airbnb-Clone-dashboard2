@@ -19,4 +19,8 @@ getAllListings(): Observable<Listing[]> {
 getListingByID(id:string):Observable<Listing>{
   return this.http.get<Listing>(`${this.apiUrl}/${id}`)
 }
+
+deleteListing(id:string){
+  return this.http.delete(`${this.apiUrl}/${id}`)
+}
 }

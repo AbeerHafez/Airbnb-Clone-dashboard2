@@ -1,152 +1,10 @@
 <mat-card class="cardWithShadow">
   <mat-card-content>
-    <mat-card-title class='text-primary'>Listing</mat-card-title>
+    <mat-card-title class='text-primary'>{{'listing'|translate}}</mat-card-title>
 
-    <div class="table-responsive">
-      <table mat-table [dataSource]="dataSource1" class="w-100">
-
-
-        <ng-container matColumnDef="assigned">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"
-          >
-            Title
-          </th>
-          <td mat-cell *matCellDef="let element" class="p-l-0">
-            <div class="d-flex align-items-center">
-              <img
-                [src]="element.photos[0]"
-                alt="users"
-                width="70"
-                height="90"
-                class="rounded"
-              />
-              <div class="m-l-16">
-                <h6 class="mat-subtitle-1 f-s-14 f-w-600">
-                  {{ element.title }}
-                </h6>
-              </div>
-            </div>
-          </td>
-        </ng-container>
-
-
-        <ng-container matColumnDef="name">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            class="f-w-600 mat-subtitle-1 f-s-14"
-          >
-            price
-          </th>
-          <td mat-cell *matCellDef="let element" class="mat-body-1">
-            <h6 class="mat-body-1 f-s-16 m-b-4">
-              <span class="text-dark f-w-600">${{ element.price }} </span>
-            </h6>
-          </td>
-        </ng-container>
-
-
-
-
-        <ng-container matColumnDef="address">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            class="f-w-600 mat-subtitle-1 f-s-14"
-          >
-          address
-          </th>
-          <td mat-cell *matCellDef="let element" class="mat-body-1">
-            <h6 class="mat-body-1 f-s-16 m-b-4">
-              <span class="text-dark f-w-600">{{ element.address.country }} </span>
-            </h6>
-          </td>
-        </ng-container>
-
-
-         <ng-container matColumnDef="priority">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            class="f-w-600 mat-subtitle-1 f-s-14"
-          >
-            Status
-          </th>
-          <td mat-cell *matCellDef="let element">
-            @if(element.priority == 'cancelled') {
-            <span
-              class="bg-light-warning text-warning rounded f-w-600 p-6 p-y-4 f-s-12"
-            >
-              {{ element.priority | titlecase }}
-            </span>
-            } @if(element.priority == 'rejected') {
-            <span
-              class="bg-light-error text-error rounded f-w-600 p-6 p-y-4 f-s-12"
-            >
-              {{ element.priority | titlecase }}
-            </span>
-            } @if(element.priority == 'confirmed') {
-            <span
-              class="bg-light-success text-success rounded f-w-600 p-6 p-y-4 f-s-12"
-            >
-              {{ element.priority | titlecase }}
-            </span>
-            }
-          </td>
-        </ng-container>
-
-
-
-        <ng-container matColumnDef="budget">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            class="f-w-600 mat-subtitle-1 f-s-14"
-          ></th>
-          <td mat-cell *matCellDef="let element" class="mat-body-1">
-            <button
-              mat-icon-button
-              [matMenuTriggerFor]="menu"
-              aria-label="Example icon-button with a menu"
-            >
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>
-                <mat-icon>add</mat-icon>
-                <span>Add</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>edit</mat-icon>
-                <span>Edit</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>delete</mat-icon>
-                <span>Delete</span>
-              </button>
-            </mat-menu>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
-      </table>
-    </div>
-  </mat-card-content>
-</mat-card>
-
-
-
-<mat-card class="cardWithShadow">
-  <mat-card-content>
-    <mat-card-title class='text-primary'>Listing</mat-card-title>
-
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap justify-content-center" style="gap: 20px; ">
       <ng-container *ngFor="let element of dataSource1">
-        <mat-card class="m-5" style="width: 300px;">
+        <mat-card class="rounded-pull"  style="width: 340px;  overflow: hidden;">
           <mat-card-header class="p-0">
             <div class="d-flex align-items-center p-0 m-0">
               <img mat-card-image
@@ -164,6 +22,7 @@
               {{ element.title }}
             </mat-card-title>
 
+
             <h6 class="mat-body-1 f-s-16 m-b-4">
               <span class="text-dark f-w-600">${{ element.price }}</span>
             </h6>
@@ -171,7 +30,7 @@
 
             <h6 class="mat-body-1 f-s-16 ">
               <span class="text-dark me-4 f-w-600">{{ element.address.country }}</span>
-              <a class="viwe-more-link" (click)="goToDetails(element._id)"> viwe more </a>
+              <a class="viwe-more-link" (click)="goToDetails(element._id)"> view more </a>
             </h6>
           </mat-card-content>
 
@@ -184,7 +43,7 @@
                 <mat-icon>edit</mat-icon>
                 <span>Edit</span>
               </button>
-              <button class="button-card bg-error " >
+              <button class="button-card bg-error " (click)="deleteroom(element._id)" >
                 <mat-icon>delete</mat-icon>
                 <span>Delete</span>
               </button>
@@ -194,5 +53,6 @@
     </div>
   </mat-card-content>
 </mat-card>
+
 
 
