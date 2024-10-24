@@ -26,8 +26,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     MatDialogModule,
     NgxPaginationModule,
-    SpinnerComponent
-        TranslateModule
+    SpinnerComponent,
+    TranslateModule
   ],
 templateUrl: './reviews.component.html',
   styleUrl: './reviews.component.scss'
