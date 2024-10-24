@@ -102,11 +102,11 @@ export const navItems: NavItem[] = [
     iconName: 'solar:login-3-line-duotone',
     route: '/authentication/login',
   },
-  {
-    displayName: 'Register',
-    iconName: 'solar:user-plus-rounded-line-duotone',
-    route: '/authentication/register',
-  },
+  // {
+  //   displayName: 'Register',
+  //   iconName: 'solar:user-plus-rounded-line-duotone',
+  //   route: '/authentication/register',
+  // },
   // {
   //   navCap: 'Extra',
   //   divider: true

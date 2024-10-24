@@ -1,40 +1,18 @@
 
 
-<!-- <div class="d-flex justify-content-around align-items-center  ">
-    <h3>{{rev.comment}}</h3>
-    <h3>{{rev.rating}}</h3>
-    <h3>{{rev.createdAt | date}}</h3>
-</div> -->
-
-<!-- <table  class="mat-elevation-z8 p-5">
-        <thead>
-            <tr>
-                <th>Comment</th>
-                <th>Rating</th>
-                <th>CreatedAt</th>
-            </tr>
-        </thead>
-        <tbody>
-                @for (rev of reviews; track $index) {
-                    <tr>
-                        <td>{{rev.comment}}</td>
-                        <td>{{rev.rating}}</td>
-                        <td>{{rev.createdAt}}</td>
-                    </tr>
-                }
-        </tbody>
-</table> -->
 
 
-
-
-
-<mat-card class="cardWithShadow">
+@if (!loading) {
+  <mat-card class="cardWithShadow">
     <mat-card-content>
       <mat-card-title class='text-primary'>Reviews</mat-card-title>
   
       <div class="table-responsive">
-        <table mat-table [dataSource]="dataSource1" class="w-100">
+        <table mat-table [dataSource]="dataSource1 | paginate: {
+                itemsPerPage: 4,
+                currentPage:page,
+                totalItems: dataSource1?.length
+              }" class="w-100">
         
   
           <ng-container matColumnDef="assigned">
@@ -147,18 +125,20 @@
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+                <!-- <button mat-menu-item>
                   <mat-icon>add</mat-icon>
                   <span>Add</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item >
                   <mat-icon>edit</mat-icon>
                   <span>Edit</span>
-                </button>
+                </button> -->
+
                 <button mat-menu-item (click)="deleteReview(element._id)">
                   <mat-icon>delete</mat-icon>
                   <span>Delete</span>
-                </button>
+                </button> 
+
               </mat-menu>
             </td>
           </ng-container>
@@ -169,3 +149,17 @@
       </div>
     </mat-card-content>
   </mat-card>
+}
+
+
+@if (!loading) {
+  <div class="d-flex justify-content-center" >
+    <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+  </div>
+}
+
+@if (loading) {
+  <div class="d-flex justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+}
