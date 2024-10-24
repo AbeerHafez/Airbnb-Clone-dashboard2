@@ -28,9 +28,11 @@
     "iconify": "^1.4.0",
     "leaflet": "^1.9.4",
     "ng-apexcharts": "^1.7.6",
+    "ngx-pagination": "^6.0.3",
     "ngx-scrollbar": "^11.0.0",
     "rxjs": "~7.5.0",
     "sass": "^1.57.1",
+    "sweetalert2": "^11.14.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },

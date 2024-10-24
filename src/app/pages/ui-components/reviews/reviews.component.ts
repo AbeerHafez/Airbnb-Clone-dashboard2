@@ -2,11 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { MaterialModule } from 'src/app/material.module';
 import { ReviewsService } from 'src/app/services/reviews.service';
+import Swal from 'sweetalert2';
+import { SpinnerComponent } from '../../spinner/spinner.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -20,31 +24,49 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+    MatDialogModule,
+    NgxPaginationModule,
+    SpinnerComponent
+],
     TranslateModule
   ],
 templateUrl: './reviews.component.html',
   styleUrl: './reviews.component.scss'
 })
 export class ReviewsComponent implements OnInit{
+  
   displayedColumns1: string[] = ['assigned', 'name', 'address', 'budget'];
   dataSource1: any;
-  // reviews:any
+  page: any =1;
+  loading:boolean=false;
+  // total: any;
 
   constructor(private reviewsService: ReviewsService){}
 
   ngOnInit() {
+    this.loading=true;
     this.reviewsService.getAllReviews().subscribe((data)=>{
-      
       this.dataSource1 = data;
-
-      console.log(data)
-      // this.reviews = data;
+      this.loading=false;
     })
   }
 
   deleteReview(reviewID:string){
-    console.log(reviewID)
-    this.reviewsService.deleteReview(reviewID)
+    let comfirmMsg = window.confirm('Are You Want To Delete This Review? ');
+    if(comfirmMsg){
+      this.reviewsService.deleteReview(reviewID).subscribe(()=>{
+        this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != reviewID)
+        Swal.fire({
+          title: "Delete Review",
+          text: "Deleted Successfully",
+          icon: "success"
+        });
+      })
+    }
   }
 
+  changePage(event:any){
+    this.page = event;
+  }
+ 
 }

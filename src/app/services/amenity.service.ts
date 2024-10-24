@@ -12,4 +12,9 @@ export class AmenityService {
   getAllAmenitys(){
     return this.httpClient.get(`http://localhost:3000/amenity`)
   }
+
+  removeAmenity(id:string){
+    return this.httpClient.delete(`http://localhost:3000/amenity/${id}`)
+  }
+  
 }
