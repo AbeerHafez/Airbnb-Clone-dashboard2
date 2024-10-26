@@ -20,6 +20,10 @@ getListingByID(id:string):Observable<Listing>{
   return this.http.get<Listing>(`${this.apiUrl}/${id}`)
 }
 
+verifayListing(id:string):Observable<any>{
+  return this.http.put(`${this.apiUrl}/${id}`,{verified:true})
+}
+
 deleteListing(id:string){
   return this.http.delete(`${this.apiUrl}/${id}`)
 }

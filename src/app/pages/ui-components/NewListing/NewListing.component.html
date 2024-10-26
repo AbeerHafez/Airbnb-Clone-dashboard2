@@ -1,9 +1,9 @@
 <mat-card class="cardWithShadow">
   <mat-card-content>
-    <mat-card-title class='text-primary'>{{'listing'|translate}}</mat-card-title>
+    <mat-card-title class='text-primary'>{{'newlisting'|translate}}</mat-card-title>
 
     <div class="d-flex flex-wrap justify-content-center" style="gap: 20px; ">
-      <ng-container *ngFor="let element of dataSource1">
+      <ng-container *ngFor="let element of listings">
         <mat-card class="rounded-pull"  style="width: 340px;  overflow: hidden;">
           <mat-card-header class="p-0">
             <div class="d-flex align-items-center p-0 m-0">
@@ -35,17 +35,14 @@
           </mat-card-content>
 
           <mat-card-actions>
-              <!-- <button class="button-card bg-success" >
-                <mat-icon>add</mat-icon>
-                <span>Add</span>
+              <button class="button-card bg-success" (click)="verifayListing(element._id)">
+                <mat-icon>check</mat-icon>
+                <span>verify</span>
               </button>
-              <button class="button-card bg-accent">
-                <mat-icon>edit</mat-icon>
-                <span>Edit</span>
-              </button> -->
-              <button class="button-card bg-error  " (click)="deleteroom(element._id)" >
-                <mat-icon>delete</mat-icon>
-                <span>Delete</span>
+
+              <button class="button-card bg-error " (click)="deleteroom(element._id)" >
+                <mat-icon>close</mat-icon>
+                <span>Cancel</span>
               </button>
           </mat-card-actions>
         </mat-card>
@@ -53,6 +50,3 @@
     </div>
   </mat-card-content>
 </mat-card>
-
-
-

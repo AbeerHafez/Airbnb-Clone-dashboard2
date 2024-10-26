@@ -68,6 +68,11 @@ export const navItems: NavItem[] = [
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
     route: '/ui-components/amenity',
   },
+  {
+    displayName: 'New Listing',
+    iconName: 'solar:sticker-smile-circle-2-line-duotone',
+    route: '/ui-components/new_Listing',
+  },
   // {
   //   displayName: 'Chips',
   //   iconName: 'solar:danger-circle-line-duotone',

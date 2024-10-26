@@ -36,7 +36,7 @@ export class listingComponent implements OnInit {
 
   ngOnInit() {
     this.ListingService.getAllListings().subscribe((data: Listing[]) => {
-      this.dataSource1 = data;
+      this.dataSource1 = data.filter(listing => listing.verified === true);
       console.log(this.dataSource1);
 
     });
@@ -59,45 +59,4 @@ export class listingComponent implements OnInit {
     }
   }
 
-
-
 }
-
-// export interface productsData {
-//   id: number;
-//   imagePath: string;
-//   uname: string;
-//   budget: number;
-//   priority: string;
-// }
-
-// const PRODUCT_DATA: productsData[] = [
-//   {
-//     id: 1,
-//     imagePath: 'assets/images/products/dash-prd-1.jpg',
-//     uname: 'iPhone 13 pro max-Pacific Blue-128GB storage',
-//     budget: 180,
-//     priority: 'confirmed',
-//   },
-//   {
-//     id: 2,
-//     imagePath: 'assets/images/products/dash-prd-2.jpg',
-//     uname: 'Apple MacBook Pro 13 inch-M1-8/256GB-space',
-//     budget: 90,
-//     priority: 'cancelled',
-//   },
-//   {
-//     id: 3,
-//     imagePath: 'assets/images/products/dash-prd-3.jpg',
-//     uname: 'PlayStation 5 DualSense Wireless Controller',
-//     budget: 120,
-//     priority: 'rejected',
-//   },
-//   {
-//     id: 4,
-//     imagePath: 'assets/images/products/dash-prd-4.jpg',
-//     uname: 'Amazon Basics Mesh, Mid-Back, Swivel Office',
-//     budget: 160,
-//     priority: 'confirmed',
-//   },
-// ];

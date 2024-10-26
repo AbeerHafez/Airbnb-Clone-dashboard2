@@ -44,4 +44,5 @@ export interface Listing {
   price: number;
   owner: string;  // User ID, assuming it's a string
   availableDates: AvailableDate[];
+  verified:boolean
 }
