@@ -33,12 +33,27 @@
 
 
   <!-- / languages change -->
-  <li>
-    <select [(ngModel)]="selectedLang" (change)="switchlanguage(selectedLang)">
-      <option value="en">English</option>
-      <option value="ar">العربية</option>
-    </select>
-  </li>
+
+
+    <mat-icon matSuffix  class="text-primary" [matMenuTriggerFor]="languageMenu">language</mat-icon>
+
+<mat-menu #languageMenu="matMenu">
+  <button mat-menu-item (click)="switchlanguage('en')">English</button>
+  <button mat-menu-item (click)="switchlanguage('ar')">العربية</button>
+</mat-menu>
+
+
+   <!-- <mat-form-field appearance="outline" style="width: fit-content; margin: 0; padding: 0;">
+    <mat-select #languageSelect (selectionChange)="switchlanguage($event.value)"  style="display: none;" >
+      <mat-option value="en" >English</mat-option>
+      <mat-option value="ar" >العربية</mat-option>
+    </mat-select>
+    <mat-icon matSuffix (click)="languageSelect.open()" style="cursor: pointer;">language</mat-icon>
+  </mat-form-field> -->
+
+
+
+
   <!-- --------------------------------------------------------------- -->
   <!-- profile Dropdown -->
   <!-- --------------------------------------------------------------- -->

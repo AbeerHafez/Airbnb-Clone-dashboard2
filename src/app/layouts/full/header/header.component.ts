@@ -35,7 +35,7 @@ export class HeaderComponent {
   }
 
   switchlanguage(lang : string){
-  
+
     this.translate.use(lang);
     this.selectedLang = lang
     console.log('Current language:', lang);
