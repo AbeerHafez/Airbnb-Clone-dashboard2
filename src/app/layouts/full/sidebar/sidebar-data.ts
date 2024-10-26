@@ -59,12 +59,12 @@ export const navItems: NavItem[] = [
   //   route: '/ui-components/tables',
   // },
   {
-    displayName: 'Reviews',
+    displayName: 'reviews',
     iconName: 'solar:file-text-line-duotone',
     route: '/ui-components/reviews',
   },
   {
-    displayName: 'Amenity',
+    displayName: 'amenity',
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
     route: '/ui-components/amenity',
   },

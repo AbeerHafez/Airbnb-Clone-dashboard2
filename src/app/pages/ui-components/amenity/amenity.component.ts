@@ -10,6 +10,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { AmenityService } from 'src/app/services/amenity.service';
 import Swal from 'sweetalert2';
 import { SpinnerComponent } from '../../spinner/spinner.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-amenity',
@@ -23,7 +24,8 @@ import { SpinnerComponent } from '../../spinner/spinner.component';
     MatButtonModule,
     CommonModule,
     NgxPaginationModule,
-    SpinnerComponent
+    SpinnerComponent,
+    TranslateModule
   ],
 templateUrl: './amenity.component.html',
   styleUrl: './amenity.component.scss'

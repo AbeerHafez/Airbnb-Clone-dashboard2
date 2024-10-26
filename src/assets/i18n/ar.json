@@ -1,6 +1,19 @@
 {
   "listing":"مسكن",
-  "Reviews":"تقييمات",
-  "home":"الرئيسية"
+  "home":"الرئيسية",
+  "reviews": "التقييمات",
+  "Reviews":{
+    "comments": "التعليقات",
+    "rating": "التقبم",
+    "createdAt": "انشئ في",
+    "delete": "حذف"
+  },
+  "amenity": "وسائل الراحه",
+  "Amenity":{
+    "icon": "ايقونه",
+    "name": "الاسم",
+    "description": "وصف",
+    "delete": "حذف"
+  }
 
 }

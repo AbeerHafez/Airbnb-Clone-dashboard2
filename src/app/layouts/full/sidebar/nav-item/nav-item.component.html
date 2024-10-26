@@ -21,6 +21,7 @@
     [attr.data-icon]="item.iconName"
   ></span>
 
-  <span class="hide-menu">{{ item.displayName }}</span>
+  <!-- <span class="hide-menu">{{ item.displayName }}</span> -->
+  <span class="hide-menu">{{ item.displayName | translate }}</span>
 </a>
 }

@@ -1,5 +1,19 @@
 {
   "listing":"listing",
-  "Reviews":"Reviews",
-  "home":"Home"
+  "home":"Home",
+  "reviews": "Reviews",
+  "Reviews":{
+    "comments": "Comments",
+    "rating": "Rating",
+    "createdAt": "Created At",
+    "delete": "Delete"
+  },
+  "amenity": "Amenity",
+  "Amenity":{
+    "icon": "Icon",
+    "name": "Name",
+    "description": "Description",
+    "delete": "Delete"
+  }
+    
 }
