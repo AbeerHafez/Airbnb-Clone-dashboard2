@@ -16,7 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-reviews',
   standalone: true,
-  imports: [
+  imports: [ 
     CommonModule,
     MatTableModule,
     MatCardModule,

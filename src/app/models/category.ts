@@ -1,10 +1,10 @@
 export interface Category {
-  id:string,
+  _id:string,
   displayName:string,
   technicalName:string,
   icon:string,
   show:boolean,
-  
+
 }
 
 

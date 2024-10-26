@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Category } from '../models/category'
 
 @Injectable({
@@ -14,12 +14,23 @@ getAllCtegory() : Observable<Category[]> {
   return this.http.get<Category[]>(this.apiUrl);
 }
 
+addCategory(category:Category){
+  return this.http.post(this.apiUrl, category)
+}
 
 
-// editCatecory(id:string){
-//   return this.http.patch(`${this.apiUrl}/${id}`)
-// }
+
+updateCatecory(id: string, updateCatecory: any): Observable<any> {
+  if (!id) {
+    console.error('Cannot update category: ID is undefined');
+    return throwError('ID is undefined');
+  }
+  return this.http.patch(`${this.apiUrl}/${id}`, updateCatecory);
+}
+
+deleteCategory(id:string):Observable<any>{
+  return this.http.delete(`${this.apiUrl}/${id}`)
+}
 
 }
 
-// import { Listing } from '../models/listing'

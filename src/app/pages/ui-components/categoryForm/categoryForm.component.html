@@ -1,0 +1,45 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title *ngIf="isEditMode" class="m-b-0">Edit Category</mat-card-title>
+    <mat-card-title *ngIf="!isEditMode" class="m-b-0">Add Category</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <form [formGroup]="categoryForm" (ngSubmit)="onSave()">
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">name category</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="displayName" matInput placeholder=" name category " />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">technical Name</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="technicalName"  matInput placeholder=" technical Name " />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">icon</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="icon" [(ngModel)]="data.icon" matInput placeholder="icon " />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+          <mat-checkbox formControlName="show">Show</mat-checkbox>
+        </div>
+      </div>
+
+
+      <div class="m-t-12">
+        <button type="submit" mat-flat-button color="primary" class="m-r-8">{{ isEditMode ? 'Edit' :'Add'}}</button>
+        <button type="button" mat-stroked-button color="warn" (click)="dialogRef.close()">Cancel</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

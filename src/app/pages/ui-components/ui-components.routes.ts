@@ -13,6 +13,7 @@ import { RoomDetailsComponent } from './RoomDetails/RoomDetails.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AmenityComponent } from './amenity/amenity.component';
 import { CategoryComponent } from './category/category.component';
+import { NewListingComponent } from './NewListing/NewListing.component'
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
@@ -64,7 +65,13 @@ export const UiComponentsRoutes: Routes = [
       {
         path:'category',
         component:CategoryComponent,
+      },
+      {
+        path:'new_Listing',
+        component:NewListingComponent,
       }
+
+
 
 
     ],
