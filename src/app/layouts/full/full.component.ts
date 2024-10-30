@@ -14,6 +14,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { HeaderComponent } from './header/header.component';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from 'src/app/services/dir.service';
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
 const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
 const MONITOR_VIEW = 'screen and (min-width: 1024px)';
@@ -41,6 +42,7 @@ const BELOWMONITOR = 'screen and (max-width: 1023px)';
 export class FullComponent implements OnInit {
 
   navItems = navItems;
+  isRtl= false
 
   @ViewChild('leftsidenav')
   public sidenav: MatSidenav | any;
@@ -56,7 +58,7 @@ export class FullComponent implements OnInit {
     return this.isMobileScreen;
   }
 
-  constructor(private breakpointObserver: BreakpointObserver, private navService: NavService , private translate:TranslateService) {
+  constructor(private breakpointObserver: BreakpointObserver, private navService: NavService , private translate:TranslateService , private LanguageService:LanguageService) {
 
     this.htmlElement = document.querySelector('html')!;
     this.htmlElement.classList.add('light-theme');
@@ -73,7 +75,11 @@ export class FullComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.LanguageService.isRtl$.subscribe((isRtl)=>{
+   this.isRtl=isRtl
+    })
+  }
 
   ngOnDestroy() {
     this.layoutChangesSubscription.unsubscribe();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
@@ -13,6 +13,11 @@ import {  Category } from '../../../models/category'
 import { CategoryFormComponent } from '../categoryForm/categoryForm.component'
 import { DomSanitizer , SafeHtml} from '@angular/platform-browser'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
+
 @Component({
   selector: 'app-category',
   standalone: true,
@@ -26,6 +31,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatButtonModule,
     FormsModule,
     CategoryFormComponent,
+    TranslateModule,
+    MatPaginatorModule,
   ],
    templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
@@ -37,6 +44,13 @@ export class CategoryComponent implements OnInit {
   isEditing=false;
   editedCategory: Category = {} as Category;
 
+
+  pageSize: number = 5;
+  pageIndex: number = 0;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+
+
   constructor(private CategoryService:CategoryService,
     private DomSanitizer:DomSanitizer,
     private dialog :MatDialog,
@@ -45,6 +59,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
 this.loadingCategory()
+
 
   }
 
@@ -141,4 +156,19 @@ this.loadingCategory()
         );
       }
     }
-  }
+
+    // changePage(event:any){
+    //   this.page = event
+    // }
+
+    onPageChange(event: PageEvent) {
+      this.pageIndex = event.pageIndex;
+      this.pageSize = event.pageSize;
+    }
+
+    get paginatedCategories(): Category[] {
+      const start = this.pageIndex * this.pageSize;
+      return this.categories.slice(start, start + this.pageSize);
+    }
+
+}

@@ -1,6 +1,6 @@
 <mat-card class="cardWithShadow">
   <mat-card-content>
-    <mat-card-title class='text-primary'>Room Details</mat-card-title>
+    <mat-card-title class='text-primary'>{{"Details.Room Details"|translate}}</mat-card-title>
 
       <ng-container *ngIf="listing">
         <mat-card-title >
@@ -9,7 +9,7 @@
 
         <mat-card class="image-card" style="width: 100%; overflow: hidden;">
             <button class="page-button left" (click)="previous()" ><mat-icon>arrow_back_ios_new</mat-icon></button>
-            
+
                <!-- <div *ngFor="let photo of listing.photos"> -->
               <img mat-card-image
                 [src]="getCurrentPhoto()"
@@ -23,57 +23,49 @@
           <mat-card-content >
 
             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
-              category:
+              {{"Details.category"|translate}}:
               <span class="text-dark f-w-600">{{listing.category}}</span>
              </h6>
 
             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
-             Description:
+              {{"Details.Description"|translate}}:
              <span class="text-dark f-w-600">{{ listing.description }}</span>
             </h6>
 
             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
-              price:
+              {{"Details.price"|translate}}:
               <span class="text-dark f-w-600">${{ listing.price }}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
-              address:
+              {{"Details.address"|translate}}:
               <span class="text-dark f-w-600">{{listing.address.street}},{{listing.address.city}},{{ listing.address.country }}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
-              <span class="text-dark f-w-600">bathrooms: {{ listing.bathrooms }}, bedrooms: {{listing.bedrooms}},beds: {{listing.beds}}</span>
+              <span class="text-dark f-w-600">{{"Details.beds"|translate}}: {{listing.beds}}, {{"Details.bedrooms"|translate}}: {{listing.bedrooms}},{{"Details.bathrooms"|translate}}: {{ listing.bathrooms }}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
-              guests: 
+              {{"Details.guests"|translate}}:
               <span class="text-dark f-w-600"> {{ listing.guests}}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
-              owner: 
+              {{"Details.owner"|translate}}:
               <span class="text-dark f-w-600"> {{ listing.owner}}</span>
              </h6>
 
 
               <div id="map" class='m-4'></div>
-                         
+
 
           </mat-card-content>
 
           <mat-card-actions class="m-0">
-              <button class="button-card bg-success" >
-                <mat-icon>add</mat-icon>
-                <span>Add</span>
-              </button>
-              <!-- <button class="button-card bg-accent">
-                <mat-icon>edit</mat-icon>
-                <span>Edit</span>
-              </button> -->
               <button class="button-card bg-error "  (click)="deleteroom(listing._id)">
                 <mat-icon>delete</mat-icon>
-                <span>Delete</span>
+                <span>{{"Delete"|translate}}</span>
               </button>
           </mat-card-actions>
         <!-- </mat-card> -->

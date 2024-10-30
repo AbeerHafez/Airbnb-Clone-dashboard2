@@ -5,6 +5,7 @@ import { ListingService } from '../../../services/listing.service'
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MaterialModule } from 'src/app/material.module';
+import { TranslateModule } from '@ngx-translate/core';
 import * as L from 'leaflet'
 
 @Component({
@@ -12,7 +13,8 @@ import * as L from 'leaflet'
   standalone: true,
   imports:[CommonModule,
      MatCardModule,
-    MaterialModule,],
+    MaterialModule,
+    TranslateModule],
   templateUrl: './RoomDetails.component.html',
   styleUrls: ['./RoomDetails.component.css']
 })
@@ -20,7 +22,7 @@ export class RoomDetailsComponent implements OnInit   {
 
   listing:any
   currentPhotoIndex:number =0
-  map:any 
+  map:any
 
   constructor(private route:ActivatedRoute , private ListingService:ListingService , private router :Router ) { }
 
@@ -50,7 +52,7 @@ export class RoomDetailsComponent implements OnInit   {
       }, error=>{
       console.error('error deleting listing',error);
       alert('There was an error deleting the listing')
-      
+
     })
     }
   }
@@ -84,7 +86,7 @@ initMap(lat: number, lng: number): void {
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: '© OpenStreetMap'
-    }).addTo(this.map);   
+    }).addTo(this.map);  
 
 
     L.Icon.Default.imagePath = 'assets/images/images/';

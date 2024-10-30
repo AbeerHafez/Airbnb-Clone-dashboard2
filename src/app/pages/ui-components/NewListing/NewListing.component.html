@@ -1,9 +1,9 @@
 <mat-card class="cardWithShadow">
   <mat-card-content>
-    <mat-card-title class='text-primary'>{{'newlisting'|translate}}</mat-card-title>
+    <mat-card-title class='text-primary'>{{'New Listing'|translate}}</mat-card-title>
 
     <div class="d-flex flex-wrap justify-content-center" style="gap: 20px; ">
-      <ng-container *ngFor="let element of listings">
+      <ng-container *ngFor="let element of pageniteListing">
         <mat-card class="rounded-pull"  style="width: 340px;  overflow: hidden;">
           <mat-card-header class="p-0">
             <div class="d-flex align-items-center p-0 m-0">
@@ -37,16 +37,24 @@
           <mat-card-actions>
               <button class="button-card bg-success" (click)="verifayListing(element._id)">
                 <mat-icon>check</mat-icon>
-                <span>verify</span>
+                <span>{{"verify" | translate}}</span>
               </button>
 
               <button class="button-card bg-error " (click)="deleteroom(element._id)" >
                 <mat-icon>close</mat-icon>
-                <span>Cancel</span>
+                <span>{{"Cancel" | translate}}</span>
               </button>
           </mat-card-actions>
         </mat-card>
       </ng-container>
     </div>
+
+    <mat-paginator style="display: flex; align-items: center; justify-content: center;"
+    [length]="listings.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[3,6,9]"
+    [showFirstLastButtons]=true
+    (page)="onpagechange($event)">
+    </mat-paginator>
   </mat-card-content>
 </mat-card>

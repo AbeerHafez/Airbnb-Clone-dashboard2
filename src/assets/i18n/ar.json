@@ -1,20 +1,57 @@
 {
-  "listing":"مسكن",
-  "newlisting":"قائمة جديدة",
-  "home":"الرئيسية",
+  "listing": "مسكن",
+  "New Listing": "قائمة جديدة",
+  "home": "الرئيسية",
   "reviews": "التقييمات",
-  "Reviews":{
+  "categories": "أقسام",
+  "Login": "تسجيل الدخول",
+  "Add": "إضافة",
+  "Edit": "تعديل",
+  "Delete": "حذف",
+  "verify":"تأكيد",
+  "Cancel":"إلغاء",
+  "Reviews": {
     "comments": "التعليقات",
-    "rating": "التقبم",
+    "rating": "التقييم",
     "createdAt": "انشئ في",
     "delete": "حذف"
   },
   "amenity": "وسائل الراحه",
-  "Amenity":{
+  "Amenity": {
     "icon": "ايقونه",
     "name": "الاسم",
     "description": "وصف",
     "delete": "حذف"
-  }
+  },
 
+  "category": {
+    "title": "عنوان",
+    "show": "عرض"
+  },
+
+  "categoryForm": {
+    "Edit Category": "تعديل الفئة",
+    "Add Category": "إضافة فئة",
+    "name category": "اسم الفئة",
+    "technical Name":"الأسم العلمي",
+    "icon":"أيقون",
+    "show":"عرض",
+    "Edit":"تعديل",
+    "Add":"إضافة",
+    "cancel":"إلغاء"
+
+  },
+  "Details":{
+    "Room Details":"تفاصيل الغرفة",
+    "category":"الفئة",
+    "Description":"الوصف",
+    "price":"السعر",
+    "address":"العنوان",
+    "bathrooms":"المرحاض",
+    "bedrooms":"غرف النوم",
+    "beds":"السرير",
+    "guests":"ضيوف",
+    "owner":"مالك"
+
+  }
 }

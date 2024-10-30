@@ -1,6 +1,6 @@
 
 import { CommonModule } from '@angular/common';
-import { Component ,OnInit } from '@angular/core';
+import { Component ,OnInit, ViewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MaterialModule } from 'src/app/material.module';
@@ -11,6 +11,8 @@ import { ListingService } from '../../../services/listing.service'
 import { Listing } from 'src/app/models/listing';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listing',
@@ -24,13 +26,17 @@ import { TranslateModule } from '@ngx-translate/core';
     MatMenuModule,
     MatButtonModule,
     TranslateModule,
-
+    MatPaginatorModule,
   ],
    templateUrl: './listing.component.html',
 })
 export class listingComponent implements OnInit {
   displayedColumns1: string[] = ['assigned', 'name', 'address', 'budget'];
   dataSource1: Listing[] = [];
+
+  pageSize: number = 3;
+  pageIndex: number = 0;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private ListingService: ListingService , private router:Router) {}
 
@@ -57,6 +63,16 @@ export class listingComponent implements OnInit {
 
     })
     }
+  }
+
+  onpagechange(event:PageEvent){
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+  }
+
+  get paginatedListing(): Listing[]{
+    const start = this.pageIndex * this.pageSize
+    return this.dataSource1.slice(start, start + this.pageSize)
   }
 
 }
