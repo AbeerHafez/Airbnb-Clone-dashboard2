@@ -3,7 +3,7 @@
     <mat-card-title class='text-primary'>{{'listing'|translate}}</mat-card-title>
 
     <div class="d-flex flex-wrap justify-content-center" style="gap: 20px; ">
-      <ng-container *ngFor="let element of dataSource1">
+      <ng-container *ngFor="let element of paginatedListing">
         <mat-card class="rounded-pull"  style="width: 340px;  overflow: hidden;">
           <mat-card-header class="p-0">
             <div class="d-flex align-items-center p-0 m-0">
@@ -45,14 +45,25 @@
               </button> -->
               <button class="button-card bg-error  " (click)="deleteroom(element._id)" >
                 <mat-icon>delete</mat-icon>
-                <span>Delete</span>
+                <span>{{"Delete" | translate}}</span>
               </button>
           </mat-card-actions>
         </mat-card>
       </ng-container>
     </div>
+    <mat-paginator style="display: flex; align-items: center; justify-content: center;"
+[length]="dataSource1.length"
+[pageSize]="pageSize"
+[pageSizeOptions]="[3, 6, 9]"
+[showFirstLastButtons]=true
+(page)="onpagechange($event)">
+</mat-paginator>
   </mat-card-content>
 </mat-card>
+
+
+
+
 
 
 

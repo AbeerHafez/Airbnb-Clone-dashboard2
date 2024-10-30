@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Category } from 'src/app/models/category';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-categoryForm',
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    TranslateModule,
   ],
   templateUrl: './categoryForm.component.html',
   styleUrls: ['./categoryForm.component.css']
