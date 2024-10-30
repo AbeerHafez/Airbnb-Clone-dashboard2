@@ -12,7 +12,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateService } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
-
+import { LanguageService } from 'src/app/services/dir.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -29,16 +29,20 @@ export class HeaderComponent {
   @Output() toggleMobileNav = new EventEmitter<void>();
   @Output() toggleCollapsed = new EventEmitter<void>();
 
-  constructor(private translate : TranslateService) {
+  constructor(private translate : TranslateService, private LanguageService:LanguageService ) {
    this.translate.setDefaultLang('en')
    this.translate.use(this.selectedLang)
-  }
+   this.LanguageService.setLanguageDirection(false)
+    }
 
   switchlanguage(lang : string){
 
     this.translate.use(lang);
     this.selectedLang = lang
-    console.log('Current language:', lang);
+    const isRtl = lang === 'ar';
+    this.LanguageService.setLanguageDirection(isRtl)
+        console.log('Current language:', lang);
 
   }
+
 }

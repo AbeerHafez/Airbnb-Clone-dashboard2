@@ -1,20 +1,57 @@
 {
-  "listing":"listing",
-  "newlisting":"New Listing",
-  "home":"Home",
+  "listing": "listing",
+  "New Listing": "New Listing",
+  "home": "Home",
   "reviews": "Reviews",
-  "Reviews":{
+  "categories": "Categories",
+  "Login": "Login",
+  "Add": "Add",
+  "Edit": "Edit",
+  "Delete": "Delete",
+  "verify":"Verify",
+  "Cancel":"Cancel",
+  "Reviews": {
     "comments": "Comments",
     "rating": "Rating",
     "createdAt": "Created At",
     "delete": "Delete"
   },
   "amenity": "Amenity",
-  "Amenity":{
+  "Amenity": {
     "icon": "Icon",
     "name": "Name",
     "description": "Description",
     "delete": "Delete"
+  },
+
+  "category": {
+    "title": "title",
+    "show": "show"
+  },
+
+  "categoryForm": {
+    "Edit Category": "Edit Category",
+    "Add Category": "Add Category",
+    "name category": "name category",
+    "technical Name":"technical Name",
+    "icon":"icon",
+    "show":"show",
+    "Edit":"Edit",
+    "Add":"Add",
+    "cancel":"cancel"
+
+  },
+  "Details":{
+    "Room Details":"Room Details",
+    "category":"category",
+    "Description":"Description",
+    "price":"price",
+    "address":"address",
+    "bathrooms":"bathrooms",
+    "bedrooms":"bedrooms",
+    "beds":"beds",
+    "guests":"guests",
+    "owner":"owner"
+
   }
-    
 }

@@ -2,8 +2,10 @@
   class="mainWrapper blue_theme light-theme"
   autosize
   autoFocus
-  dir="ltr"
->
+  mode="side"
+ opened position="end"
+ [dir]="isRtl ? 'rtl' : 'ltr'"
+ >
   <!-- ============================================================== -->
   <!-- Vertical Sidebar -->
   <!-- ============================================================== -->

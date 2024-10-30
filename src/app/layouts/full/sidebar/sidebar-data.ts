@@ -24,7 +24,7 @@ export const navItems: NavItem[] = [
     route: '/ui-components/listing',
   },
   {
-    displayName:'category',
+    displayName:'categories',
     iconName:'solar:danger-circle-line-duotone',
     route:'/ui-components/category'
   },
