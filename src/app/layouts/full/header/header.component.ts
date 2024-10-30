@@ -39,6 +39,9 @@ export class HeaderComponent {
     this.translate.use(lang);
     this.selectedLang = lang
     console.log('Current language:', lang);
-
+    // this.translate.onLangChange.subscribe(event => {
+    //   document.documentElement.dir = event.lang === 'ar' ? 'rtl' : 'ltr';
+    //   document.body.dir = event.lang === 'ar' ? 'rtl' : 'ltr';
+    // });
   }
 }
