@@ -8,8 +8,8 @@
   "Add": "إضافة",
   "Edit": "تعديل",
   "Delete": "حذف",
-  "verify":"تأكيد",
-  "Cancel":"إلغاء",
+  "verify": "تأكيد",
+  "Cancel": "إلغاء",
   "Reviews": {
     "comments": "التعليقات",
     "rating": "التقييم",
@@ -33,25 +33,33 @@
     "Edit Category": "تعديل الفئة",
     "Add Category": "إضافة فئة",
     "name category": "اسم الفئة",
-    "technical Name":"الأسم العلمي",
-    "icon":"أيقون",
-    "show":"عرض",
-    "Edit":"تعديل",
-    "Add":"إضافة",
-    "cancel":"إلغاء"
-
+    "technical Name": "الأسم العلمي",
+    "icon": "أيقون",
+    "show": "عرض",
+    "Edit": "تعديل",
+    "Add": "إضافة",
+    "cancel": "إلغاء"
   },
-  "Details":{
-    "Room Details":"تفاصيل الغرفة",
-    "category":"الفئة",
-    "Description":"الوصف",
-    "price":"السعر",
-    "address":"العنوان",
-    "bathrooms":"المرحاض",
-    "bedrooms":"غرف النوم",
-    "beds":"السرير",
-    "guests":"ضيوف",
-    "owner":"مالك"
-
+  "Details": {
+    "Room Details": "تفاصيل الغرفة",
+    "category": "الفئة",
+    "Description": "الوصف",
+    "price": "السعر",
+    "address": "العنوان",
+    "bathrooms": "المرحاض",
+    "bedrooms": "غرف النوم",
+    "beds": "السرير",
+    "guests": "ضيوف",
+    "owner": "مالك"
+  },
+  "reservations": {
+    "reservations": "الحجوزات",
+    "ID": "معرف الحجز",
+    "listing": "المسكن",
+    "user": "المستخدم",
+    "start": "من",
+    "end": "إلي",
+    "guests": "الضيوف",
+    "Price": "السعر الاجمالي"
   }
 }

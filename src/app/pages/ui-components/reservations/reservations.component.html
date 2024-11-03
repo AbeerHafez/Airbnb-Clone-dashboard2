@@ -1,0 +1,172 @@
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <mat-card-title class='text-primary'>{{"reservations.reservations" | translate}}</mat-card-title>
+
+    <div class="table-responsive">
+
+      <table mat-table [dataSource]="paginatedReservations" class="w-100">
+
+        <!-- _id Column -->
+        <ng-container matColumnDef="_id">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"
+          >
+          {{"reservations.ID" | translate}}
+          </th>
+          <td mat-cell *matCellDef="let element" class="p-l-0">
+            <div class="d-flex align-items-center">
+              <div class="m-l-16">
+                <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                  {{ element._id }}
+                </h6>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- listing Column -->
+        <ng-container matColumnDef="listing">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          >
+          {{"reservations.listing" | translate}}
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+           <div>{{element.listingId.title}}</div>
+          </td>
+        </ng-container>
+
+        <!-- user Column -->
+        <ng-container matColumnDef="user">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          >
+          {{"reservations.user" | translate}}
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            <div>{{ element.userId?.firstName || "-" }} {{ element.userId?.lastName || "-" }}</div>
+          </td>
+        </ng-container>
+
+
+        <!-- start date Column -->
+        <ng-container matColumnDef="startDate">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          >
+          {{"reservations.start" | translate}}
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+           <div>{{element.startDate | date: 'yyyy-MM-dd'}}</div>
+          </td>
+        </ng-container>
+
+
+        <!-- endDate Column -->
+        <ng-container matColumnDef="endDate">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          >
+          {{"reservations.end" | translate}}
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+           <div>{{element.endDate | date: 'yyyy-MM-dd'}}</div>
+          </td>
+        </ng-container>
+
+         <!-- guests Column -->
+         <ng-container matColumnDef="guests">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          >
+          {{"reservations.guests" | translate}}
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+           <div>{{element.guestsCount}}</div>
+          </td>
+        </ng-container>
+
+
+         <!-- totalPrice Column -->
+         <ng-container matColumnDef="totelPrice">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          >
+           {{"reservations.Price" | translate}}
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+           <div>{{element.totalPrice}}</div>
+          </td>
+        </ng-container>
+
+
+
+
+
+
+
+        <!-- Symbol Column -->
+        <!-- <ng-container matColumnDef="budget">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="f-w-600 mat-subtitle-1 f-s-14"
+          ></th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="onAddCategory()">
+                <mat-icon>add</mat-icon>
+                <span>{{'Add' | translate}}</span>
+              </button>
+              <button mat-menu-item (click)="onEditCategory(element)">
+                <mat-icon>edit</mat-icon>
+                <span>{{'Edit' | translate}}</span>
+              </button>
+
+
+
+              <button mat-menu-item (click)="onDeleteCategory(element._id)">
+                <mat-icon>delete</mat-icon>
+                <span>{{'Delete' | translate}}</span>
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container> -->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+      </table>
+    </div>
+
+    <mat-paginator style="display: flex; align-items: center; justify-content: center;"
+    [length]="reservations.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    [showFirstLastButtons]=true
+    (page)="onPageChange($event)">
+    </mat-paginator>
+
+  </mat-card-content>
+
+</mat-card>

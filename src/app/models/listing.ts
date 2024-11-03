@@ -1,10 +1,12 @@
-// export interface Address {
-//   country: string;
-//   city: string;
-//   street: string;
-//   governorate: string;
-//   postalCode: string;
-// }
+import { Amenity } from "./amenity"
+
+export interface Address {
+  country: string;
+  city: string;
+  street: string;
+  governorate: string;
+  postalCode: string;
+}
 
 export interface Location {
   latitude: number;
@@ -16,33 +18,29 @@ export interface AvailableDate {
   end_date: Date;
 }
 
-// export interface Amenity {
-//   // Define fields as needed based on the Amenity structure.
-//   name: string;  // Just an example, adjust it according to your schema
-// }
+export interface owner {
+  _id:string;
+  firstName:string;
+  lastName:string;
+}
+
 
 export interface Listing {
-  _id: string;  // Assuming MongoDB ObjectId as string
+  _id: string;  
   type: string;
-  category: string;  // This can be string or ID depending on your backend structure
-  address: {
-    country: string;
-    city: string;
-    street: string;
-    governorate: string;
-    postalCode: string;
-  };
+  category: string;
+  address: Address;
   location: Location;
   guests: number;
   bedrooms: number;
   beds: number;
   bathrooms: number;
-  // amenities?: Amenity[];  // Optional field
+  amenities?: Amenity[];
   photos: string[];
   title: string;
   description: string;
   price: number;
-  owner: string;  // User ID, assuming it's a string
+  owner: owner;
   availableDates: AvailableDate[];
   verified:boolean
 }

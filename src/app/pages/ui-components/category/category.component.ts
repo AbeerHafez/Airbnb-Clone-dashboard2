@@ -14,7 +14,6 @@ import { CategoryFormComponent } from '../categoryForm/categoryForm.component'
 import { DomSanitizer , SafeHtml} from '@angular/platform-browser'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -156,10 +155,6 @@ this.loadingCategory()
         );
       }
     }
-
-    // changePage(event:any){
-    //   this.page = event
-    // }
 
     onPageChange(event: PageEvent) {
       this.pageIndex = event.pageIndex;

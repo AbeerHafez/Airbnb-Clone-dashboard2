@@ -13,6 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { TranslateService } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { LanguageService } from 'src/app/services/dir.service';
+import { Subject } from 'rxjs';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -31,17 +33,18 @@ export class HeaderComponent {
 
   constructor(private translate : TranslateService, private LanguageService:LanguageService ) {
    this.translate.setDefaultLang('en')
-   this.translate.use(this.selectedLang)
-   this.LanguageService.setLanguageDirection(false)
+   this.LanguageService.currentLanguage.subscribe(lang=>{
+     this.selectedLang = lang
+     this.translate.use(lang)
+     const isRtl = lang === 'ar';
+    this.LanguageService.setLanguageDirection(isRtl)
+   })
     }
 
   switchlanguage(lang : string){
 
-    this.translate.use(lang);
-    this.selectedLang = lang
-    const isRtl = lang === 'ar';
-    this.LanguageService.setLanguageDirection(isRtl)
-        console.log('Current language:', lang);
+    this.LanguageService.changeLanguage(lang)
+   console.log('Current language:', lang);
 
   }
 

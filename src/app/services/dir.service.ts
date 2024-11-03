@@ -8,6 +8,9 @@ export class LanguageService {
   private isRtlSubject = new BehaviorSubject<boolean>(false);
   isRtl$ = this.isRtlSubject.asObservable();
 
+  private languageSubject  = new BehaviorSubject<string>('en');
+  currentLanguage = this.languageSubject.asObservable()
+
   setLanguageDirection(isRtl: boolean) {
     this.isRtlSubject.next(isRtl);
     const htmlTag = document.documentElement as HTMLElement;
@@ -20,4 +23,9 @@ export class LanguageService {
       htmlTag.classList.remove('rtl');
     }
   }
+
+  changeLanguage(lang: string) {
+    this.languageSubject.next(lang);
+  }
+
 }

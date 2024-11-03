@@ -13,7 +13,8 @@ import { RoomDetailsComponent } from './RoomDetails/RoomDetails.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AmenityComponent } from './amenity/amenity.component';
 import { CategoryComponent } from './category/category.component';
-import { NewListingComponent } from './NewListing/NewListing.component'
+import { NewListingComponent } from './NewListing/NewListing.component';
+import { ReservationsComponent } from './reservations/reservations.component'
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
@@ -69,6 +70,11 @@ export const UiComponentsRoutes: Routes = [
       {
         path:'new_Listing',
         component:NewListingComponent,
+      },
+      {
+        path:'reservation',
+        component:ReservationsComponent,
+
       }
 
 

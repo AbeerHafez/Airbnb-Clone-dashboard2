@@ -27,6 +27,10 @@ export const navItems: NavItem[] = [
     displayName:'categories',
     iconName:'solar:danger-circle-line-duotone',
     route:'/ui-components/category'
+  },{
+    displayName:'reservations.reservations',
+    iconName:'solar:danger-circle-line-duotone',
+    route:'/ui-components/reservation'
   },
   // {
   //   displayName: 'Chips',
