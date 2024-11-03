@@ -47,18 +47,38 @@ export class AmenityComponent implements OnInit{
     })
   }
 
+  // removeAmenity(id:string){
+  //   let comfirmMsg = window.confirm('Are You Want To Delete This Amenity? ');
+  //   if(comfirmMsg){
+  //     this.amenityService.removeAmenity(id).subscribe(()=>{
+  //       this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != id)
+  //       Swal.fire({
+  //         title: "Delete Amenity",
+  //         text: "Deleted Successfully",
+  //         icon: "success"
+  //       });
+  //     })
+  //   }
+  // }
   removeAmenity(id:string){
-    let comfirmMsg = window.confirm('Are You Want To Delete This Amenity? ');
-    if(comfirmMsg){
-      this.amenityService.removeAmenity(id).subscribe(()=>{
-        this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != id)
-        Swal.fire({
-          title: "Delete Amenity",
-          text: "Deleted Successfully",
-          icon: "success"
-        });
+
+    Swal.fire({
+      title: "Are You Sure to Delete This Item?",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      confirmButtonColor : "#e45555"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.amenityService.removeAmenity(id).subscribe(()=>{
+          this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != id)
+          Swal.fire("Deleted!", "", "success");
       })
-    }
+      } else if (result.isDismissed) {
+        Swal.fire("Deleted Canseled", "", "info");
+      }
+    }).catch((err)=>{
+      Swal.fire("Error", "", "error")
+    });
   }
 
 

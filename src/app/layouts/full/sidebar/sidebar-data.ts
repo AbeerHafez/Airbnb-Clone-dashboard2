@@ -24,6 +24,11 @@ export const navItems: NavItem[] = [
     route: '/ui-components/listing',
   },
   {
+    displayName: 'New Listing',
+    iconName: 'solar:sticker-smile-circle-2-line-duotone',
+    route: '/ui-components/new_Listing',
+  },
+  {
     displayName:'categories',
     iconName:'solar:danger-circle-line-duotone',
     route:'/ui-components/category'
@@ -72,11 +77,7 @@ export const navItems: NavItem[] = [
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
     route: '/ui-components/amenity',
   },
-  {
-    displayName: 'New Listing',
-    iconName: 'solar:sticker-smile-circle-2-line-duotone',
-    route: '/ui-components/new_Listing',
-  },
+
   // {
   //   displayName: 'Chips',
   //   iconName: 'solar:danger-circle-line-duotone',

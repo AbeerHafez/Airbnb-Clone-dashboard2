@@ -12,14 +12,21 @@ export class AppComponent {
   title = 'Modernize Angular Admin Tempplate';
 
   constructor(private translate: TranslateService){
-
   }
-
+  
   initializeTranslation(){
     this.translate.addLangs(['en' , 'ar'])
     this.translate.setDefaultLang('en')
-
+    
     const browserlang= this.translate.getBrowserLang()
     this.translate.use(browserlang?.match(/en|ar/)?browserlang:'en')
+
+    
+
+    // this.translate.onLangChange.subscribe(event => {
+    //   document.documentElement.dir = event.lang === 'ar' ? 'rtl' : 'ltr';
+    //   document.body.dir = event.lang === 'ar' ? 'rtl' : 'ltr';
+    // });
+
   }
 }

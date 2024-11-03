@@ -50,18 +50,46 @@ export class ReviewsComponent implements OnInit{
     })
   }
 
+  // deleteReview(reviewID:string){
+  //   let comfirmMsg = window.confirm('Are You Want To Delete This Review? ');
+  //   if(comfirmMsg){
+  //     this.reviewsService.deleteReview(reviewID).subscribe(()=>{
+  //       this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != reviewID)
+  //       Swal.fire({
+  //         position: "center",
+  //         icon: "success",
+  //         title: "Deleted Successfully",
+  //         showConfirmButton: false,
+  //         timer: 1500
+  //       });
+  //       // Swal.fire({
+  //       //   title: "Delete Review",
+  //       //   text: "Deleted Successfully",
+  //       //   icon: "success"
+  //       // });
+  //     })
+  //   }
+  // }
   deleteReview(reviewID:string){
-    let comfirmMsg = window.confirm('Are You Want To Delete This Review? ');
-    if(comfirmMsg){
-      this.reviewsService.deleteReview(reviewID).subscribe(()=>{
-        this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != reviewID)
-        Swal.fire({
-          title: "Delete Review",
-          text: "Deleted Successfully",
-          icon: "success"
-        });
+
+    Swal.fire({
+      title: "Are You Sure to Delete This Item?",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      confirmButtonColor : "#e45555"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reviewsService.deleteReview(reviewID).subscribe(()=>{
+          this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != reviewID)
+          Swal.fire("Deleted!", "", "success");
       })
-    }
+      } else if (result.isDismissed) {
+        Swal.fire("Deleted Canseled", "", "info");
+      }
+    }).catch((err)=>{
+      Swal.fire("Error", "", "error")
+    });
+    
   }
 
   changePage(event:any){
