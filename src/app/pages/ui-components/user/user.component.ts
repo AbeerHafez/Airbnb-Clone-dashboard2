@@ -60,6 +60,9 @@ export class UserComponent implements OnInit {
   removeUser(id:string){
     Swal.fire({
       title: "Are You Sure to Delete This Item?",
+      customClass: {
+        title: 'custom-title',
+      },
       showCancelButton: true,
       confirmButtonText: "Delete",
       confirmButtonColor : "#e45555"
@@ -67,14 +70,33 @@ export class UserComponent implements OnInit {
       if (result.isConfirmed) {
         this.userService.deleteUser(id).subscribe(()=>{
           this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != id)
-          Swal.fire("Deleted!", "", "success");
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'User deleted.',
+            icon: 'success',
+            iconColor: '#e45555',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#e45555',
+          });
       })
       } else if (result.isDismissed) {
-        Swal.fire("Deleted Canseled", "", "info");
-      }
+        Swal.fire({
+          title: 'Error!',
+          text: 'Error deleting User',
+          icon: 'error',
+          iconColor: '#000000',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#000000',
+        });      }
     }).catch((err)=>{
-      Swal.fire("Error", "", "error")
-    });
+      Swal.fire({
+        title: 'Error!',
+        text: 'Error deleting User',
+        icon: 'error',
+        iconColor: '#000000',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#000000',
+      });    });
   }
 
 

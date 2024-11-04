@@ -162,22 +162,44 @@ export class AmenityComponent implements OnInit{
   removeAmenity(id:string){
 
     Swal.fire({
-      title: "Are You Sure to Delete This Item?",
+      title: 'Are you sure you want to delete this amenity?',
+      customClass: {
+        title: 'custom-title',
+      },
       showCancelButton: true,
-      confirmButtonText: "Delete",
-      confirmButtonColor : "#e45555"
+      confirmButtonText: 'Delete',
+      confirmButtonColor: '#e45555',
     }).then((result) => {
       if (result.isConfirmed) {
         this.amenityService.removeAmenity(id).subscribe(()=>{
           this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != id)
-          Swal.fire("Deleted!", "", "success");
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Your amenity has been deleted.',
+            icon: 'success',
+            iconColor: '#e45555',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#e45555',
+          });
       })
       } else if (result.isDismissed) {
-        Swal.fire("Deleted Canseled", "", "info");
+        Swal.fire({
+          title: 'Error!',
+          text: 'Error deleting ameity',
+          icon: 'error',
+          iconColor: '#000000',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#000000',
+        });
       }
     }).catch((err)=>{
-      Swal.fire("Error", "", "error")
-    });
+      Swal.fire({
+        title: 'Error!',
+        icon: 'error',
+        iconColor: '#000000',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#000000',
+      });    });
   }
 
 

@@ -70,19 +70,35 @@ export class AdminComponent {
   }
 
   removeUser(id:string){
-    Swal.fire({
-      title: "Are You Sure to Delete This Item?",
-      showCancelButton: true,
-      confirmButtonText: "Delete",
-      confirmButtonColor : "#e45555"
+      Swal.fire({
+        title: 'Are You Sure to Delete This Admin?',
+        customClass: {
+          title: 'custom-title',
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        confirmButtonColor: '#e45555',
     }).then((result) => {
       if (result.isConfirmed) {
         this.userService.deleteUser(id).subscribe(()=>{
           this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != id)
-          Swal.fire("Deleted!", "", "success");
-      })
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Admin deleted.',
+            icon: 'success',
+            iconColor: '#e45555',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#e45555',
+          });      })
       } else if (result.isDismissed) {
-        Swal.fire("Deleted Canseled", "", "info");
+        Swal.fire({
+          title: 'Error!',
+          text: 'Error deleting Admin',
+          icon: 'error',
+          iconColor: '#000000',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#000000',
+        });
       }
     }).catch((err)=>{
       Swal.fire("Error", "", "error")
@@ -96,8 +112,13 @@ export class AdminComponent {
       this.users = uss;
     }, (error) => {
       console.error('Error loading', error);
-      this.snackBar.open('Error loading', 'Close', {
-        duration: 3000,
+      Swal.fire({
+        title: 'Error!',
+        text: 'Error loading',
+        icon: 'error',
+        iconColor: '#000000',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#000000',
       });
     });
   }
@@ -118,17 +139,27 @@ export class AdminComponent {
 
         this.userService.updateAdmin(result._id, result).subscribe(
           ()=>{
+            Swal.fire({
+              title: 'update!',
+              text: 'Admin update successfully.',
+              icon: 'success',
+              iconColor: '#e45555',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#e45555',
+            });
             this.loadingAdmin()
-            this.snackBar.open('Admin updated successfully' , "close" , {
-              duration:3000,
-            })
             window.location.reload()
           },
           (err)=>{
             console.error('Error In Update Admin' , err);
-            this.snackBar.open('Admin updated successfully' , "close" , {
-              duration:3000,
-            })
+            Swal.fire({
+              title: 'Error!',
+              text: 'Error update Admin',
+              icon: 'error',
+              iconColor: '#000000',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#000000',
+            });
           }
         );
       }
@@ -149,16 +180,27 @@ export class AdminComponent {
         if(result){
           this.userService.addAdmin(result).subscribe(
             ()=>{
-              this.loadingAdmin()
-              this.snackBar.open('Admin Added Successfully', 'Close', {
-                duration: 3000,
+
+              Swal.fire({
+                title: 'Add!',
+                text: 'Admin added successfully.',
+                icon: 'success',
+                iconColor: '#e45555',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#e45555',
               });
+              this.loadingAdmin()
               window.location.reload()
             },
           (error) => {
             console.error('Error Adding Admin', error);
-            this.snackBar.open('Error In Adding Admin', 'Close', {
-              duration: 3000,
+            Swal.fire({
+              title: 'Error!',
+              text: 'Error adding Admin',
+              icon: 'error',
+              iconColor: '#000000',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#000000',
             });
           }
           );
@@ -168,7 +210,7 @@ export class AdminComponent {
     }
 
 
-  
+
   onpagechange(event:PageEvent){
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;

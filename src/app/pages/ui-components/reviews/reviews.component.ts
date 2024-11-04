@@ -80,6 +80,9 @@ export class ReviewsComponent implements OnInit{
 
     Swal.fire({
       title: "Are You Sure to Delete This Item?",
+      customClass: {
+        title: 'custom-title',
+      },
       showCancelButton: true,
       confirmButtonText: "Delete",
       confirmButtonColor : "#e45555"
@@ -87,13 +90,34 @@ export class ReviewsComponent implements OnInit{
       if (result.isConfirmed) {
         this.reviewsService.deleteReview(reviewID).subscribe(()=>{
           this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != reviewID)
-          Swal.fire("Deleted!", "", "success");
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Your reviews has been deleted.',
+            icon: 'success',
+            iconColor: '#e45555',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#e45555',
+          });
       })
       } else if (result.isDismissed) {
-        Swal.fire("Deleted Canseled", "", "info");
+        Swal.fire({
+          title: 'Error!',
+          text: 'Error deleting reviews',
+          icon: 'error',
+          iconColor: '#000000',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#000000',
+        });
       }
     }).catch((err)=>{
-      Swal.fire("Error", "", "error")
+      Swal.fire({
+        title: 'Error!',
+        text: 'Error deleting reviews',
+        icon: 'error',
+        iconColor: '#000000',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#000000',
+      });
     });
 
   }
