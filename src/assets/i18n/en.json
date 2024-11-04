@@ -61,5 +61,23 @@
     "end": "end Date",
     "guests": "guests",
     "Price": "total Price"
+  },
+  "User": {
+    "user": "Users",
+    "admins": "Admins",
+    "addAdmin": "Add New Admin",
+    "image": "Image",
+    "fullName": "Full Name",
+    "email": "Email",
+    "country": "Country",
+    "city": "City",
+    "street": "Street",
+    "address": "Address",
+    "name": "Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "password": "Password",
+    "role": "Role",
+    "zip": "Zip"
   }
 }

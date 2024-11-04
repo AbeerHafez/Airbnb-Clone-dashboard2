@@ -5,11 +5,7 @@
       <mat-card-title class='text-primary'>{{'Amenity.amenity' | translate}}</mat-card-title>
   
       <div class="table-responsive">
-        <table mat-table [dataSource]="dataSource1 | paginate: {
-          itemsPerPage: 4,  
-          currentPage:page,
-          totalItems: dataSource1?.length
-        }" class="w-100">
+        <table mat-table [dataSource]="paginatedAmenity" class="w-100">
         
   
           <ng-container matColumnDef="assigned">
@@ -142,16 +138,25 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
         </table>
       </div>
+
+      <mat-paginator style="display: flex; align-items: center; justify-content: center;"
+      [length]="dataSource1.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20]"
+      [showFirstLastButtons]=true
+      (page)="onPageChange($event)">
+      </mat-paginator>
+
     </mat-card-content>
   </mat-card>
 }
 
 
-@if (!loading) {
+<!-- @if (!loading) {
   <div class="d-flex justify-content-center">
     <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
   </div>
-}
+} -->
 
 @if (loading) {
   <div class="d-flex justify-content-center">

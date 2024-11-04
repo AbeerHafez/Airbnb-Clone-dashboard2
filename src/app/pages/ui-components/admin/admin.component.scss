@@ -1,0 +1,10 @@
+
+.addAdmin, .updateAndEdit{
+    // background-color: #e27f7f;
+    transition: .3s;
+}
+
+.addAdmin:hover, .updateAndEdit:hover{
+    background-color: #e45555;
+    color: #fff;
+}

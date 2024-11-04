@@ -13,8 +13,10 @@ import { RoomDetailsComponent } from './RoomDetails/RoomDetails.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AmenityComponent } from './amenity/amenity.component';
 import { CategoryComponent } from './category/category.component';
-import { NewListingComponent } from './NewListing/NewListing.component';
 import { ReservationsComponent } from './reservations/reservations.component'
+import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
+import { NewListingComponent } from './NewListing/NewListing.component'
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
@@ -74,7 +76,14 @@ export const UiComponentsRoutes: Routes = [
       {
         path:'reservation',
         component:ReservationsComponent,
-
+      },
+      {
+        path:'user',
+        component:UserComponent,
+      },
+      {
+        path:'admin',
+        component:AdminComponent,
       }
 
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -12,6 +12,8 @@ import { ReviewsService } from 'src/app/services/reviews.service';
 import Swal from 'sweetalert2';
 import { SpinnerComponent } from '../../spinner/spinner.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Reviews } from 'src/app/models/reviews';
 
 @Component({
   selector: 'app-reviews',
@@ -39,6 +41,10 @@ export class ReviewsComponent implements OnInit{
   page: any =1;
   loading:boolean=false;
   // total: any;
+  pageSize: number = 5;
+  pageIndex: number = 0;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
 
   constructor(private reviewsService: ReviewsService){}
 
@@ -92,8 +98,20 @@ export class ReviewsComponent implements OnInit{
     
   }
 
-  changePage(event:any){
-    this.page = event;
+  // changePage(event:any){
+  //   this.page = event;
+  // }
+
+  
+  onPageChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
   }
+
+  get paginatedReviews(): Reviews[] {
+    const start = this.pageIndex * this.pageSize;
+    return this.dataSource1.slice(start, start + this.pageSize);
+  }
+
  
 }
