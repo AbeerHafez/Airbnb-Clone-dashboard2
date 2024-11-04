@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatPaginatorModule , MatPaginator } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-NewListing',
@@ -59,27 +60,63 @@ export class NewListingComponent implements OnInit {
 
   verifayListing(id:string){
     this.ListingService.verifayListing(id).subscribe(()=>{
-      alert("verifay successfully")
+      Swal.fire({
+        title: 'verifay!',
+        text: 'verifay successfully.',
+        icon: 'success',
+        iconColor: '#e45555',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#e45555',
+      });
 
       this.listings = this.listings.filter(listing => listing._id !== id);
     }, (error: any) => {
     console.error('error verifay', error);
-    alert('error verifay');
+    Swal.fire({
+      title: 'Error!',
+      text: 'Error verifay',
+      icon: 'error',
+      iconColor: '#000000',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#000000',
+    });
   });
   }
 
   deleteroom(id:string):void{
-    if(confirm('Are you sure you want to delete this listing?')){
+      Swal.fire({
+        title: 'Are you sure you want to delete this listing?',
+        customClass: {
+          title: 'custom-title',
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        confirmButtonColor: '#e45555',
+      }).then((result) => {
+        if (result.isConfirmed) {
       this.ListingService.deleteListing(id).subscribe(()=>{
-        alert('listing deleted successfully')
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'listing deleted successfully.',
+          icon: 'success',
+          iconColor: '#e45555',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#e45555',
+        });
         this.listings = this.listings.filter(listing =>listing._id !== id)
-      }, (error: any)=>{
+      }, (error)=>{
       console.error('error deleting listing',error);
-      alert('There was an error deleting the listing')
-
+      Swal.fire({
+        title: 'Error!',
+        text: 'Error deleting listing',
+        icon: 'error',
+        iconColor: '#000000',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#000000',
+      });
     })
     }
-  }
+  })}
 
   onpagechange(event:PageEvent){
     this.pageSize = event.pageSize

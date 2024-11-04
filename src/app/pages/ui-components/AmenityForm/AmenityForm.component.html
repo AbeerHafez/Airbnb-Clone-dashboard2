@@ -1,0 +1,43 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title *ngIf="isEditMode" class="m-b-0">{{"categoryForm.Edit Category" | translate}}</mat-card-title>
+    <mat-card-title *ngIf="!isEditMode" class="m-b-0">{{"categoryForm.Add Category" | translate}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <form [formGroup]="amenityForm" (ngSubmit)="onSave()">
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.name category" | translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="name" matInput placeholder="  amenity name " />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.technical Name" | translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="description"  matInput placeholder=" description " />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.icon" | translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="icon" [(ngModel)]="data.icon" matInput placeholder="icon " />
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="m-t-12">
+        <button type="submit" mat-flat-button color="primary" class="m-r-8">
+          {{ (isEditMode ? "categoryForm.Edit" : "categoryForm.Add") | translate }}
+        </button>
+        <button type="button" mat-stroked-button color="warn" (click)="dialogRef.close()">{{"categoryForm.cancel" | translate}}</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
