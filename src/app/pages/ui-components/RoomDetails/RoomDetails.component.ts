@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MaterialModule } from 'src/app/material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import * as L from 'leaflet'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-RoomDetails',
@@ -47,11 +48,25 @@ export class RoomDetailsComponent implements OnInit   {
   deleteroom(id:string):void{
     if(confirm('Are you sure you want to delete this listing?')){
       this.ListingService.deleteListing(id).subscribe(()=>{
-        alert('listing deleted successfully')
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'listing deleted successfully.',
+          icon: 'success',
+          iconColor: '#e45555',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#e45555',
+        });
         this.router.navigate(['ui-components/listing'])
       }, error=>{
       console.error('error deleting listing',error);
-      alert('There was an error deleting the listing')
+      Swal.fire({
+        title: 'Error!',
+        text: 'There was an error deleting the listing',
+        icon: 'error',
+        iconColor: '#000000',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#000000',
+      });
 
     })
     }

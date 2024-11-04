@@ -4,7 +4,7 @@
 
       <ng-container *ngIf="listing">
         <mat-card-title >
-          {{ listing.title }}
+          {{ listing.title ||'' }}
         </mat-card-title>
 
         <mat-card class="image-card" style="width: 100%; overflow: hidden;">
@@ -24,36 +24,36 @@
 
             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.category"|translate}}:
-              <span class="text-dark f-w-600">{{listing.category}}</span>
+              <span class="text-dark f-w-600">{{listing.category ||''}}</span>
              </h6>
 
             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.Description"|translate}}:
-             <span class="text-dark f-w-600">{{ listing.description }}</span>
+             <span class="text-dark f-w-600">{{ listing.description ||''}}</span>
             </h6>
 
             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.price"|translate}}:
-              <span class="text-dark f-w-600">${{ listing.price }}</span>
+              <span class="text-dark f-w-600">${{ listing.price ||''}}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.address"|translate}}:
-              <span class="text-dark f-w-600">{{listing.address.street}},{{listing.address.city}},{{ listing.address.country }}</span>
+              <span class="text-dark f-w-600">{{listing.address?.street ||''}},{{listing.address?.city ||''}},{{ listing.address?.country ||''}}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
-              <span class="text-dark f-w-600">{{"Details.beds"|translate}}: {{listing.beds}}, {{"Details.bedrooms"|translate}}: {{listing.bedrooms}},{{"Details.bathrooms"|translate}}: {{ listing.bathrooms }}</span>
+              <span class="text-dark f-w-600">{{"Details.beds"|translate}}: {{listing.beds ||''}}, {{"Details.bedrooms"|translate}}: {{listing.bedrooms ||''}},{{"Details.bathrooms"|translate}}: {{ listing.bathrooms ||''}}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.guests"|translate}}:
-              <span class="text-dark f-w-600"> {{ listing.guests}}</span>
+              <span class="text-dark f-w-600"> {{ listing.guests ||''}}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.owner"|translate}}:
-              <span class="text-dark f-w-600"> {{ listing.owner.firstName}} {{listing.owner.lastName}}</span>
+              <span class="text-dark f-w-600"> {{ listing.owner?.firstName || "--" }} {{ listing.owner?.lastName || "--" }}</span>
              </h6>
 
 

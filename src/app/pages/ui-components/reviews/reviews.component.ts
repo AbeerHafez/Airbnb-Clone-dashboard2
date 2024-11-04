@@ -18,7 +18,7 @@ import { Reviews } from 'src/app/models/reviews';
 @Component({
   selector: 'app-reviews',
   standalone: true,
-  imports: [ 
+  imports: [
     CommonModule,
     MatTableModule,
     MatCardModule,
@@ -35,7 +35,7 @@ templateUrl: './reviews.component.html',
   styleUrl: './reviews.component.scss'
 })
 export class ReviewsComponent implements OnInit{
-  
+
   displayedColumns1: string[] = ['assigned', 'name', 'address', 'budget'];
   dataSource1: any;
   page: any =1;
@@ -95,23 +95,21 @@ export class ReviewsComponent implements OnInit{
     }).catch((err)=>{
       Swal.fire("Error", "", "error")
     });
-    
+
   }
 
-  // changePage(event:any){
-  //   this.page = event;
-  // }
 
-  
   onPageChange(event: PageEvent) {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
   }
+
 
   get paginatedReviews(): Reviews[] {
     const start = this.pageIndex * this.pageSize;
     return this.dataSource1.slice(start, start + this.pageSize);
   }
 
- 
+
+
 }

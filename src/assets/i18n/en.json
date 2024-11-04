@@ -25,7 +25,8 @@
   },
 
   "category": {
-    "title": "title",
+    "icon": "Icon",
+    "name": "Name",
     "show": "show"
   },
 
