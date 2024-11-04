@@ -14,6 +14,8 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { AmenityComponent } from './amenity/amenity.component';
 import { CategoryComponent } from './category/category.component';
 import { NewListingComponent } from './NewListing/NewListing.component'
+import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
@@ -69,6 +71,14 @@ export const UiComponentsRoutes: Routes = [
       {
         path:'new_Listing',
         component:NewListingComponent,
+      },
+      {
+        path:'user',
+        component:UserComponent,
+      },
+      {
+        path:'admin',
+        component:AdminComponent,
       }
 
 

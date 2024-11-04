@@ -1,0 +1,178 @@
+
+@if (!loading) {
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title class='text-primary'>{{'User.user' | translate}}</mat-card-title>
+    
+        <div class="table-responsive">
+          <table mat-table [dataSource]="paginatedUser" class="w-100">
+          
+    
+            <ng-container matColumnDef="assigned">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"
+              >
+               <h3> {{'User.image' | translate}}</h3>
+              </th>
+              <td mat-cell *matCellDef="let element" class="p-l-0">
+                <div class="d-flex align-items-center">
+                  <img
+                    [src]="element.image"
+                    alt="users"
+                    width="100"
+                    height="100"
+                    class="rounded"
+                  />
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    class="f-w-600 mat-subtitle-1 f-s-14"
+                >
+                    <h3> {{'User.fullName'  | translate}}</h3>
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1">
+                    <h6 class="mat-body-1 f-s-16 m-b-4">
+                        <span class="text-dark f-w-600">{{element.firstName + ' ' +element.lastName}}</span>
+                    </h6>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    class="f-w-600 mat-subtitle-1 f-s-14"
+                >
+                <h3> {{'User.email' | translate}}</h3>
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1">
+                    <h6 class="mat-body-1 f-s-16 m-b-4">
+                        <span class="text-dark f-w-600">{{ element.email }} </span>
+                    </h6>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="country">
+                <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    class="f-w-600 mat-subtitle-1 f-s-14"
+                >
+                <h3> {{'User.country' | translate}}</h3>
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1">
+                    <h6 class="mat-body-1 f-s-16 m-b-4">
+                        @if(element.address.country.length == ''){
+                            <span class="text-dark f-w-600">Egypt</span>
+                        }@else{
+                            <span class="text-dark f-w-600">{{element.address.country}}</span>
+                        }
+                    </h6>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="city">
+                <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    class="f-w-600 mat-subtitle-1 f-s-14"
+                >
+                <h3> {{'User.city' | translate}}</h3>
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1">
+                    <h6 class="mat-body-1 f-s-16 m-b-4">
+                        @if(element.address.city.length == ''){
+                            <span class="text-dark f-w-600">Cairo</span>
+                        }@else{
+                            <span class="text-dark f-w-600">{{element.address.city}}</span>
+                        }
+                    </h6>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="street">
+                <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    class="f-w-600 mat-subtitle-1 f-s-14"
+                >
+                <h3> {{'User.street' | translate}}</h3>
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1">
+                    <h6 class="mat-body-1 f-s-16 m-b-4">
+                        @if(element.address.street.length == ''){
+                            <span class="text-dark f-w-600">Zayed</span>
+                        }@else{
+                            <span class="text-dark f-w-600">{{element.address.street}}</span>
+                        }
+                    </h6>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="budget">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="f-w-600 mat-subtitle-1 f-s-14"
+              ></th>
+              <td mat-cell *matCellDef="let element" class="mat-body-1">
+                  <!-- <h1>{{element | json}}</h1> -->
+                <button
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  aria-label="Example icon-button with a menu"
+                >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <!-- <button mat-menu-item>
+                    <mat-icon>add</mat-icon>
+                    <span>Add</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit</span>
+                  </button> -->
+                  <button mat-menu-item (click)="removeUser(element._id)" >
+                    <mat-icon>delete</mat-icon>
+                    <span> {{'Amenity.delete' | translate}}</span>
+                  </button> 
+                </mat-menu>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+          </table>
+        </div>
+        <mat-paginator style="display: flex; align-items: center; justify-content: center;"
+        [length]="dataSource1.length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20]"
+        [showFirstLastButtons]=true
+        (page)="onPageChange($event)">
+        </mat-paginator>
+
+      </mat-card-content>
+    </mat-card>
+  }
+  
+  
+  <!-- @if (!loading) {
+    <div class="d-flex justify-content-center">
+      <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+    </div>
+  } -->
+  
+  @if (loading) {
+    <div class="d-flex justify-content-center">
+      <app-spinner></app-spinner>
+    </div>
+  }

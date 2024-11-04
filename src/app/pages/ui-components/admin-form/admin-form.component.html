@@ -1,0 +1,107 @@
+<mat-card class="cardWithShadow theme-card " >
+  <!-- <mat-card-header>
+    <mat-card-title *ngIf="isEditMode" class="m-b-0">{{"categoryForm.Edit Category" | translate}}</mat-card-title>
+    <mat-card-title *ngIf="!isEditMode" class="m-b-0">{{"categoryForm.Add Category" | translate}}</mat-card-title>
+  </mat-card-header> -->
+  <mat-card-content class="b-t-1">
+    <form [formGroup]="adminForm" (ngSubmit)="onSave()">
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{'User.firstName'|translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="firstName" matInput placeholder=" {{'User.firstName'|translate}}" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{'User.lastName'|translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="lastName"  matInput placeholder="{{'User.lastName'|translate}}" />
+          </mat-form-field>
+        </div>
+        
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{'User.email'|translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="email" matInput placeholder="{{'User.email'|translate}}" />
+          </mat-form-field>
+        </div>
+        
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{'User.password'|translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="password"  matInput placeholder="{{'User.password'|translate}}" />
+          </mat-form-field>
+        </div>
+        
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{'User.role'|translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="roles" readonly  matInput />
+          </mat-form-field>
+        </div>
+
+        
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{'User.image'|translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="image"  matInput placeholder="{{'User.image'|translate}}" />
+          </mat-form-field>
+        </div>
+
+        <div formGroupName="address" class=" d-flex flex-wrap">
+          <!-- <h3>Address</h3> -->
+
+          <div class="col-lg-3">
+            <mat-label  class="f-w-600 m-b-8 d-block">{{'User.country'|translate}}</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input formControlName="country"  matInput placeholder="{{'User.country'|translate}}" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-3">
+            <mat-label  class="f-w-600 m-b-8 d-block">{{'User.street'|translate}}</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input formControlName="street"  matInput placeholder="{{'User.street'|translate}}" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-3">
+            <mat-label  class="f-w-600 m-b-8 d-block">{{'User.city'|translate}}</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input formControlName="city"  matInput placeholder="{{'User.city'|translate}}" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-3">
+            <mat-label  class="f-w-600 m-b-8 d-block">{{'User.zip'|translate}}</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input formControlName="zip"  matInput placeholder="{{'User.zip'|translate}}" />
+            </mat-form-field>
+          </div>
+
+        </div> 
+
+
+        <!-- <div class="col-lg-6">
+          <mat-checkbox formControlName="show">{{"categoryForm.show" | translate}}</mat-checkbox>
+        </div> -->
+      </div>
+
+
+      <div class="m-t-12">
+        <button type="submit" mat-flat-button color="primary" class="m-r-8">
+          {{'categoryForm.Add'|translate}}
+          <!-- {{ (isEditMode ? "categoryForm.Edit" : "categoryForm.Add") | translate }} -->
+        </button>
+        <button type="button" mat-stroked-button color="warn" (click)="dialogRef.close()">{{"categoryForm.cancel" | translate}}</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
