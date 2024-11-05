@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 import { SpinnerComponent } from '../../spinner/spinner.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeHtml , DomSanitizer} from '@angular/platform-browser';
-import { AmenityFormComponent} from '../AmenityForm/AmenityForm.component'
+import { AmenityFormComponent } from '../AmenityForm/AmenityForm.component';
 import { Amenity } from 'src/app/models/amenity';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
