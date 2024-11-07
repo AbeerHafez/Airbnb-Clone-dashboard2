@@ -34,6 +34,8 @@
 
   <!-- / languages change -->
 
+  <!-- <button mat-stroked-button class="logoutBtn"  (click)="logout()"> Logout </button> -->
+
 
     <mat-icon matSuffix  class="text-primary" [matMenuTriggerFor]="languageMenu">language</mat-icon>
 
@@ -41,6 +43,7 @@
   <button mat-menu-item (click)="switchlanguage('en')">English</button>
   <button mat-menu-item (click)="switchlanguage('ar')">العربية</button>
 </mat-menu>
+
 
 
    <!-- <mat-form-field appearance="outline" style="width: fit-content; margin: 0; padding: 0;">
@@ -99,10 +102,10 @@
 
     <div class="p-x-12 m-t-12">
       <a
-        [routerLink]="['/authentication/login']"
+      (click)="logout()"
         mat-stroked-button
-        color="primary"
         class="w-100"
+        style="background-color: #e45555; color: white;"
         >Logout</a
       >
     </div>

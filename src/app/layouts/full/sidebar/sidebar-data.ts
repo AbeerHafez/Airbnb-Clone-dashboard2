@@ -52,13 +52,13 @@ export const navItems: NavItem[] = [
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
     route: '/ui-components/amenity',
   },
-  {
-    navCap: 'Auth',
-    divider: true
-  },
-  {
-    displayName: 'Login',
-    iconName: 'solar:login-3-line-duotone',
-    route: '/authentication/login',
-  },
+  // {
+  //   navCap: 'Auth',
+  //   divider: true
+  // },
+  // {
+  //   displayName: 'Login',
+  //   iconName: 'solar:login-3-line-duotone',
+  //   route: '/authentication/login',
+  // },
 ];
