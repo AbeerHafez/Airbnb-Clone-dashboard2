@@ -20,7 +20,7 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'components',
+        path: 'ui-components',
         loadChildren: () =>
           import('./pages/ui-components/ui-components.routes').then(
             (m) => m.UiComponentsRoutes

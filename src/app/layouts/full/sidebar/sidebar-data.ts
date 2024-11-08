@@ -16,41 +16,41 @@ export const navItems: NavItem[] = [
   {
     displayName: 'listing',
     iconName: 'solar:archive-minimalistic-line-duotone',
-    route: '/ui-components/listing',
+    route: '/components/listing',
   },
   {
     displayName: 'New Listing',
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
-    route: '/ui-components/new_Listing',
+    route: '/components/new_Listing',
   },
   {
     displayName:'categories',
     iconName:'solar:danger-circle-line-duotone',
-    route:'/ui-components/category'
+    route:'/components/category'
   },{
     displayName:'reservations.reservations',
     iconName:'solar:danger-circle-line-duotone',
-    route:'/ui-components/reservation'
+    route:'/components/reservation'
   },
   {
     displayName:'User.user',
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
-    route:'/ui-components/user'
+    route:'/components/user'
   },
   {
     displayName:'User.admins',
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
-    route:'/ui-components/admin'
+    route:'/components/admin'
   },
   {
     displayName: 'reviews',
     iconName: 'solar:file-text-line-duotone',
-    route: '/ui-components/reviews',
+    route: '/components/reviews',
   },
   {
     displayName: 'amenity',
     iconName: 'solar:sticker-smile-circle-2-line-duotone',
-    route: '/ui-components/amenity',
+    route: '/components/amenity',
   },
   // {
   //   navCap: 'Auth',
