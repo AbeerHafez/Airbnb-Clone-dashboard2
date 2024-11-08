@@ -7,8 +7,8 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
-
+  // apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
+apiUrl = "http://localhost:3000"
 
   constructor(private httpClient: HttpClient) { }
 

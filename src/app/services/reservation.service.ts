@@ -6,8 +6,8 @@ import  {Reservations } from "../models/reservations"
   providedIn: 'root'
 })
 export class ReservationService {
-  apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
-
+  // apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
+apiUrl = "http://localhost:3000"
 constructor(private http: HttpClient) { }
 
 getAllReservations():Observable<Reservations[]>{

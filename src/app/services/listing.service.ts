@@ -8,8 +8,8 @@ import { Listing } from '../models/listing'
   providedIn: 'root'
 })
 export class ListingService {
-  apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
-
+  // apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
+apiUrl = "http://localhost:3000"
 
 constructor(private http: HttpClient) { }
 

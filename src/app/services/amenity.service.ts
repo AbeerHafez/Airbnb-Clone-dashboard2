@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AmenityService {
-   apiurl = "https://airbnb-clone-backend-opal.vercel.app"
+  //  apiurl= "https://airbnb-clone-backend-opal.vercel.app"
+  apiurl = "http://localhost:3000"
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,6 +30,6 @@ export class AmenityService {
     if(!id){
       console.log('id is undefined');
     }
-    return this.httpClient.patch(`${this.apiurl}/${id}` ,editAmenity )
+    return this.httpClient.patch(`${this.apiurl}/amenity/${id}` ,editAmenity )
   }
 }
