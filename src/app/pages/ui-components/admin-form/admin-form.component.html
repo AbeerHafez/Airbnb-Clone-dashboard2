@@ -1,4 +1,4 @@
-<mat-card class="cardWithShadow theme-card " >
+<mat-card class="cardWithShadow theme-card " [attr.dir]="isRtl?'rtl':'ltr'">
   <!-- <mat-card-header>
     <mat-card-title *ngIf="isEditMode" class="m-b-0">{{"categoryForm.Edit Category" | translate}}</mat-card-title>
     <mat-card-title *ngIf="!isEditMode" class="m-b-0">{{"categoryForm.Add Category" | translate}}</mat-card-title>

@@ -10,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { User } from 'src/app/models/user';
+import { LanguageService } from 'src/app/services/dir.service';
 
 @Component({
   selector: 'app-adminForm',
@@ -33,7 +34,10 @@ export class AdminFormComponent  {
   adminForm:FormGroup;
   isEditMode:boolean;
 
+  isRtl:boolean = false
+
   constructor(
+    private LanguageService:LanguageService,
     private FormBuild: FormBuilder,
     public dialogRef:MatDialogRef<AdminFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data:User
@@ -56,6 +60,18 @@ export class AdminFormComponent  {
       })
     })
    }
+
+   ngOnInit(){
+    this.LanguageService.isRtl$.subscribe(isRlt=>{
+      this.isRtl = isRlt
+    })
+   }
+
+   onLanguageChange(lang: string) {
+    this.LanguageService.changeLanguage(lang);
+    this.LanguageService.setLanguageDirection(lang === 'ar');
+  }
+
 
   onSave(): void {
     if(this.adminForm.valid){
