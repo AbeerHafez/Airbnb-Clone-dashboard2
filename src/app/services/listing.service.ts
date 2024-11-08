@@ -8,23 +8,24 @@ import { Listing } from '../models/listing'
   providedIn: 'root'
 })
 export class ListingService {
-  private apiUrl = 'http://localhost:3000/listing'; // URL الخاص بـ API
+  apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
+
 
 constructor(private http: HttpClient) { }
 
 getAllListings(): Observable<Listing[]> {
-  return this.http.get<Listing[]>(this.apiUrl);
+  return this.http.get<Listing[]>(`${this.apiUrl}/listing`);
 }
 
 getListingByID(id:string):Observable<Listing>{
-  return this.http.get<Listing>(`${this.apiUrl}/${id}`)
+  return this.http.get<Listing>(`${this.apiUrl}/listing/${id}`)
 }
 
 verifayListing(id:string):Observable<any>{
-  return this.http.put(`${this.apiUrl}/${id}`,{verified:true})
+  return this.http.put(`${this.apiUrl}/listing/${id}`,{verified:true})
 }
 
 deleteListing(id:string){
-  return this.http.delete(`${this.apiUrl}/${id}`)
+  return this.http.delete(`${this.apiUrl}/listing/${id}`)
 }
 }

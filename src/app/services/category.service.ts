@@ -7,7 +7,8 @@ import { Category } from '../models/category'
   providedIn: 'root'
 })
 export class CategoryService {
-private apiUrl = 'http://localhost:3000/category';
+apiUrl = "https://airbnb-clone-backend-opal.vercel.app/category"
+
 constructor(private http: HttpClient) { }
 
 getAllCtegory() : Observable<Category[]> {

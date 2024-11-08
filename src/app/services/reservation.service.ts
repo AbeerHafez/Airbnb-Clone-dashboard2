@@ -6,16 +6,16 @@ import  {Reservations } from "../models/reservations"
   providedIn: 'root'
 })
 export class ReservationService {
-  private apiUrl = 'http://localhost:3000/book'; // URL الخاص بـ API
+  apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
 
 constructor(private http: HttpClient) { }
 
 getAllReservations():Observable<Reservations[]>{
-  return this.http.get<Reservations[]>(this.apiUrl);
+  return this.http.get<Reservations[]>(`${this.apiUrl}/book`);
 }
 
 getMonthlyBookingsAndRevenue(year: number): Observable<any> {
-  return this.http.get<any>(`${this.apiUrl}?year=${year}`);
+  return this.http.get<any>(`${this.apiUrl}/book?year=${year}`);
 }
 
 }

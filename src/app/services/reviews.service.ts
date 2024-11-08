@@ -5,15 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ReviewsService {
+  apiUrl = "https://airbnb-clone-backend-opal.vercel.app"
+
 
   constructor(private httpClient: HttpClient) { }
 
   getAllReviews(){
-    return this.httpClient.get('http://localhost:3000/review/')
+    return this.httpClient.get(`${this.apiUrl}/review/`)
   }
 
   deleteReview(id:string){
-    return this.httpClient.delete(`http://localhost:3000/review/${id}`)
+    return this.httpClient.delete(`${this.apiUrl}/review/${id}`)
   }
 
 }
