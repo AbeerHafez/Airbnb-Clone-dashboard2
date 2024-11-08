@@ -57,7 +57,7 @@ export class listingComponent implements OnInit {
 
 
   goToDetails(id:string):void {
-    this.router.navigate(['ui-components/details',id])
+    this.router.navigate(['components/details',id])
   }
 
   deleteroom(id:string):void{
