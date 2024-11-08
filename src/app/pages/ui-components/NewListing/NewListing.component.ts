@@ -62,7 +62,7 @@ export class NewListingComponent implements OnInit {
 
 
   goToDetails(id:string):void {
-    this.router.navigate(['ui-components/details',id])
+    this.router.navigate(['components/details',id])
   }
 
   verifayListing(id:string){
