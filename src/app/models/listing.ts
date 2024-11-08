@@ -1,4 +1,5 @@
 import { Amenity } from "./amenity"
+import { Category} from './category'
 
 export interface Address {
   country: string;
@@ -26,9 +27,9 @@ export interface owner {
 
 
 export interface Listing {
-  _id: string;  
+  _id: string;
   type: string;
-  category: string;
+  category: Category;
   address: Address;
   location: Location;
   guests: number;

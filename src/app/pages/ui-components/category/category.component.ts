@@ -16,7 +16,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2';
-
+import { LanguageService } from 'src/app/services/dir.service';
+import { SpinnerComponent } from '../../spinner/spinner.component';
 @Component({
   selector: 'app-category',
   standalone: true,
@@ -32,6 +33,7 @@ import Swal from 'sweetalert2';
     CategoryFormComponent,
     TranslateModule,
     MatPaginatorModule,
+    SpinnerComponent
   ],
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css'],
@@ -46,13 +48,25 @@ export class CategoryComponent implements OnInit {
   pageIndex: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  currentLang:string="en"
+
+  loading:boolean=false;
+
+
   constructor(
+    private LanguageService:LanguageService,
     private CategoryService: CategoryService,
     private DomSanitizer: DomSanitizer,
     private dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    this.loading=true;
+
+    this.LanguageService.currentLanguage.subscribe((lang)=>{
+      this.currentLang = lang
+    })
+
     this.loadingCategory();
   }
 
@@ -60,6 +74,7 @@ export class CategoryComponent implements OnInit {
     this.CategoryService.getAllCtegory().subscribe(
       (data: Category[]) => {
         this.categories = data;
+        this.loading=false;
         console.log(this.categories);
       },
       (error) => {
@@ -88,8 +103,13 @@ export class CategoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        console.log(result);
         this.CategoryService.addCategory(result).subscribe(
-          () => {
+          (res) => {
+            console.log("res",res);
+            setTimeout(()=>{
+              this.loadingCategory();
+            },500)
             this.loadingCategory();
             Swal.fire({
               title: 'Add!',

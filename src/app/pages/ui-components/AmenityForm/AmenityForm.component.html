@@ -1,32 +1,62 @@
-<mat-card class="cardWithShadow theme-card">
+<mat-card class="cardWithShadow theme-card" [attr.dir]="isRtl?'rtl':'ltr'">
   <mat-card-header>
-    <mat-card-title *ngIf="isEditMode" class="m-b-0">{{"categoryForm.Edit Category" | translate}}</mat-card-title>
-    <mat-card-title *ngIf="!isEditMode" class="m-b-0">{{"categoryForm.Add Category" | translate}}</mat-card-title>
+    <mat-card-title *ngIf="isEditMode" class="m-b-0">{{"amenityForm.Edit amenity" | translate}}</mat-card-title>
+    <mat-card-title *ngIf="!isEditMode" class="m-b-0">{{"amenityForm.Add amenity" | translate}}</mat-card-title>
   </mat-card-header>
   <mat-card-content class="b-t-1">
-    <form [formGroup]="amenityForm" (ngSubmit)="onSave()">
+    <form [formGroup]="amenityForm" (ngSubmit)="onSave()" >
       <div class="row">
-        <div class="col-lg-6">
-          <!-- input -->
-          <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.name category" | translate}}</mat-label>
-          <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input formControlName="name" matInput placeholder="  amenity name " />
-          </mat-form-field>
+
+        <div formGroupName="name" class="col-lg-6">
+
+          <div >
+            <!-- input -->
+            <mat-label  class="f-w-600 m-b-8 d-block">{{"amenityForm.name english" | translate}}</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input formControlName="en" matInput placeholder="Amenity Name " />
+            </mat-form-field>
+          </div>
+  
+          <div >
+            <!-- input -->
+            <mat-label  class="f-w-600 m-b-8 d-block">{{"amenityForm.name arabic" | translate}}</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input formControlName="ar" matInput placeholder="اسم وسيلة الراحة  " />
+            </mat-form-field>
+          </div>
+
+        </div>
+        
+        <div formGroupName="description" class="col-lg-6">
+       
+          <div>
+            <!-- input -->
+            <mat-label  class="f-w-600 m-b-8 d-block">{{"amenityForm.description english" | translate}}</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input formControlName="en"  matInput placeholder=" description " />
+            </mat-form-field>
+          </div>
+  
+          <div>
+            <!-- input -->
+            <mat-label  class="f-w-600 m-b-8 d-block">{{"amenityForm.description arabic" | translate}}</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input formControlName="ar"  matInput placeholder=" الوصف " />
+            
+            
+            </mat-form-field>
+          </div>
+
         </div>
 
-        <div class="col-lg-6">
-          <!-- input -->
-          <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.technical Name" | translate}}</mat-label>
-          <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input formControlName="description"  matInput placeholder=" description " />
-          </mat-form-field>
-        </div>
 
-        <div class="col-lg-6">
+        
+
+        <div class="col-lg-12">
           <!-- input -->
           <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.icon" | translate}}</mat-label>
           <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input formControlName="icon" [(ngModel)]="data.icon" matInput placeholder="icon " />
+            <input formControlName="icon"  matInput placeholder="icon " />
           </mat-form-field>
         </div>
       </div>

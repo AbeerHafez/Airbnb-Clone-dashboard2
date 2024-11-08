@@ -2,7 +2,7 @@
 @if (!loading) {
   <mat-card class="cardWithShadow">
     <mat-card-content>
-      <mat-card-title class='text-primary'>{{'Amenity.amenity' | translate}}</mat-card-title>
+      <mat-card-title class='text-primary'>{{'amenity' | translate}}</mat-card-title>
 
       <div class="table-responsive">
         <table mat-table [dataSource]="paginatedAmenity" class="w-100">
@@ -33,7 +33,7 @@
             </th>
             <td mat-cell *matCellDef="let element" class="mat-body-1">
               <h6 class="mat-body-1 f-s-16 m-b-4">
-                <span class="text-dark f-w-600">{{ element.name }} </span>
+                <span class="text-dark f-w-600">{{ element.name[currentLang] }} </span>
             </h6>
         </td>
     </ng-container>
@@ -51,43 +51,10 @@
     </th>
     <td mat-cell *matCellDef="let element" class="mat-body-1">
         <h6 class="mat-body-1 f-s-16 m-b-4">
-            <span class="text-dark f-w-600">{{ element.description }} </span>
+            <span class="text-dark f-w-600">{{ element.description[currentLang] }} </span>
         </h6>
             </td>
           </ng-container>
-
-<!--
-           <ng-container matColumnDef="priority">
-            <th
-              mat-header-cell
-              *matHeaderCellDef
-              class="f-w-600 mat-subtitle-1 f-s-14"
-            >
-              Status
-            </th>
-            <td mat-cell *matCellDef="let element">
-              @if(element.priority == 'cancelled') {
-              <span
-                class="bg-light-warning text-warning rounded f-w-600 p-6 p-y-4 f-s-12"
-              >
-                {{ element.priority | titlecase }}
-              </span>
-              } @if(element.priority == 'rejected') {
-              <span
-                class="bg-light-error text-error rounded f-w-600 p-6 p-y-4 f-s-12"
-              >
-                {{ element.priority | titlecase }}
-              </span>
-              } @if(element.priority == 'confirmed') {
-              <span
-                class="bg-light-success text-success rounded f-w-600 p-6 p-y-4 f-s-12"
-              >
-                {{ element.priority | titlecase }}
-              </span>
-              }
-            </td>
-          </ng-container>
-   -->
 
 
           <ng-container matColumnDef="budget">
@@ -108,11 +75,11 @@
               <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="AddAmenity()">
                   <mat-icon>add</mat-icon>
-                  <span>Add</span>
+                  <span>{{'Add' | translate}}</span>
                 </button>
                 <button mat-menu-item (click)="EditAmenity(element)">
                   <mat-icon>edit</mat-icon>
-                  <span>Edit</span>
+                  <span>{{'Edit' | translate}}</span>
                 </button>
                 <button mat-menu-item (click)="removeAmenity(element._id)" >
                   <mat-icon>delete</mat-icon>
@@ -139,12 +106,6 @@
   </mat-card>
 }
 
-
-<!-- @if (!loading) {
-  <div class="d-flex justify-content-center">
-    <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
-  </div>
-} -->
 
 @if (loading) {
   <div class="d-flex justify-content-center">

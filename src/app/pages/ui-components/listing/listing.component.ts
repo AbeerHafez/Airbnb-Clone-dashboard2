@@ -14,6 +14,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
+import { SpinnerComponent } from '../../spinner/spinner.component';
 
 @Component({
   selector: 'app-listing',
@@ -28,6 +29,7 @@ import Swal from 'sweetalert2';
     MatButtonModule,
     TranslateModule,
     MatPaginatorModule,
+    SpinnerComponent
   ],
    templateUrl: './listing.component.html',
 })
@@ -39,15 +41,20 @@ export class listingComponent implements OnInit {
   pageIndex: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  loading:boolean=false;
+
   constructor(private ListingService: ListingService , private router:Router ,private translate: TranslateService) {}
 
   ngOnInit() {
+    this.loading=true;
+
     this.ListingService.getAllListings().subscribe((data: Listing[]) => {
       this.dataSource1 = data.filter((listing) => listing.verified === true)
+      this.loading = false
       console.log(this.dataSource1);
         })
     }
-    
+
 
   goToDetails(id:string):void {
     this.router.navigate(['ui-components/details',id])

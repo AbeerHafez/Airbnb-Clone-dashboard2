@@ -14,4 +14,8 @@ getAllReservations():Observable<Reservations[]>{
   return this.http.get<Reservations[]>(this.apiUrl);
 }
 
+getMonthlyBookingsAndRevenue(year: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}?year=${year}`);
+}
+
 }

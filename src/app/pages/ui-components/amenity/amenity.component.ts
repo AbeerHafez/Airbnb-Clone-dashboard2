@@ -16,7 +16,7 @@ import { AmenityFormComponent} from '../AmenityForm/AmenityForm.component'
 import { Amenity } from 'src/app/models/amenity';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
+import { LanguageService } from 'src/app/services/dir.service';
 @Component({
   selector: 'app-amenity',
   standalone: true,
@@ -50,30 +50,25 @@ export class AmenityComponent implements OnInit{
   isEditing = false;
   editedCategory: Amenity = {} as Amenity;
 
-  constructor(private amenityService: AmenityService , private DomSanitizer:DomSanitizer, private dialog :MatDialog){}
+  currentLang:string="en"
+
+  constructor(private amenityService: AmenityService , private DomSanitizer:DomSanitizer,
+     private dialog :MatDialog, private LanguageService:LanguageService){ }
 
 
   ngOnInit(): void {
+    this.LanguageService.currentLanguage.subscribe((lang)=>{
+      this.currentLang = lang
+    })
     this.loading=true;
     this.amenityService.getAllAmenitys().subscribe((data)=>{
       this.dataSource1 = data;
+      console.log(this.dataSource1);
+
       this.loading=false;
     })
   }
 
-  // removeAmenity(id:string){
-  //   let comfirmMsg = window.confirm('Are You Want To Delete This Amenity? ');
-  //   if(comfirmMsg){
-  //     this.amenityService.removeAmenity(id).subscribe(()=>{
-  //       this.dataSource1 = this.dataSource1.filter((ele:any)=>ele._id != id)
-  //       Swal.fire({
-  //         title: "Delete Amenity",
-  //         text: "Deleted Successfully",
-  //         icon: "success"
-  //       });
-  //     })
-  //   }
-  // }
 
   getSanitizedSvg(svg:string):SafeHtml{
     return this.DomSanitizer.bypassSecurityTrustHtml(svg)
@@ -203,9 +198,6 @@ export class AmenityComponent implements OnInit{
   }
 
 
-  // changePage(event:any){
-  //   this.page = event;
-  // }
 
   onPageChange(event: PageEvent) {
     this.pageIndex = event.pageIndex;

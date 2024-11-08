@@ -28,4 +28,8 @@ export class LanguageService {
     this.languageSubject.next(lang);
   }
 
+  getCurrentLang(): string {
+    return this.languageSubject.getValue();
+  }
+
 }

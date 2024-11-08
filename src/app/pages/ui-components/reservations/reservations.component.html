@@ -1,3 +1,5 @@
+@if(!loading){
+
 <mat-card class="cardWithShadow">
   <mat-card-content>
     <mat-card-title class='text-primary'>{{"reservations.reservations" | translate}}</mat-card-title>
@@ -113,47 +115,6 @@
           </td>
         </ng-container>
 
-
-
-
-
-
-
-        <!-- Symbol Column -->
-        <!-- <ng-container matColumnDef="budget">
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            class="f-w-600 mat-subtitle-1 f-s-14"
-          ></th>
-          <td mat-cell *matCellDef="let element" class="mat-body-1">
-            <button
-              mat-icon-button
-              [matMenuTriggerFor]="menu"
-              aria-label="Example icon-button with a menu"
-            >
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="onAddCategory()">
-                <mat-icon>add</mat-icon>
-                <span>{{'Add' | translate}}</span>
-              </button>
-              <button mat-menu-item (click)="onEditCategory(element)">
-                <mat-icon>edit</mat-icon>
-                <span>{{'Edit' | translate}}</span>
-              </button>
-
-
-
-              <button mat-menu-item (click)="onDeleteCategory(element._id)">
-                <mat-icon>delete</mat-icon>
-                <span>{{'Delete' | translate}}</span>
-              </button>
-            </mat-menu>
-          </td>
-        </ng-container> -->
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
       </table>
@@ -170,3 +131,12 @@
   </mat-card-content>
 
 </mat-card>
+}
+
+
+@if(loading){
+  <div class="d-flex justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+}
+

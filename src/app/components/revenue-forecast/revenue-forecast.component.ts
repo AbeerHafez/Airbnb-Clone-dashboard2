@@ -1,145 +1,122 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild ,OnInit } from '@angular/core';
 import { MaterialModule } from '../../material.module';
 import { TablerIconsModule } from 'angular-tabler-icons';
-import {
-  ApexChart,
-  ChartComponent,
-  ApexDataLabels,
-  ApexLegend,
-  ApexStroke,
-  ApexTooltip,
-  ApexAxisChartSeries,
-  ApexPlotOptions,
-  NgApexchartsModule,
-  ApexFill,
-} from 'ng-apexcharts';
-
-export interface revenueForecastChart {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  tooltip: ApexTooltip;
-  stroke: ApexStroke;
-  legend: ApexLegend;
-  fill: ApexFill;
-}
-
-interface month {
-  value: string;
-  viewValue: string;
-}
-
+import {  ChartComponent, NgApexchartsModule} from 'ng-apexcharts';
+import { ReservationService} from 'src/app/services/reservation.service'
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-revenue-forecast',
   standalone: true,
-  imports: [MaterialModule, TablerIconsModule, NgApexchartsModule],
+  imports: [TranslateModule,MaterialModule, TablerIconsModule, NgApexchartsModule],
   templateUrl: './revenue-forecast.component.html',
 })
-export class AppRevenueForecastComponent {
+export class AppRevenueForecastComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent = Object.create(null);
-  public revenueForecastChart!: Partial<revenueForecastChart> | any;
+  public revenueForecastChart:  any;
 
-  months: month[] = [
-    { value: 'mar', viewValue: 'Sep 2024' },
-    { value: 'apr', viewValue: 'Oct 2024' },
-    { value: 'june', viewValue: 'Nov 2024' },
-  ];
 
-  constructor() {
-    this.revenueForecastChart = {
-      series: [
-        {
-          name: '2024',
-          data: [1.2, 2.7, 1, 3.6, 2.1, 2.7, 2.2, 1.3, 2.5],
-        },
-        {
-          name: '2023',
-          data: [-2.8, -1.1, -2.5, -1.5, -2.3, -1.9, -1, -2.1, -1.3],
-        },
-      ],
-
+  constructor( private ReservationService:ReservationService) {
+    this.revenueForecastChart ={
+      series: [],
       chart: {
-        type: 'bar',
-        fontFamily: 'inherit',
+        type: 'area',
+        fontFamily:'inherit',
         foreColor: '#adb0bb',
-        height: 295,
+        height: 330,
         stacked: true,
-        offsetX: -15,
-        toolbar: {
-          show: false,
-        },
+        toolbar: { show: false },
       },
       colors: ['rgba(99, 91, 255, 1)', 'rgba(255, 102, 146,1)'],
-      plotOptions: {
-        bar: {
-          horizontal: false,
-          barHeight: '60%',
-          columnWidth: '15%',
-          borderRadius: [6],
-          borderRadiusApplication: 'end',
-          borderRadiusWhenStacked: 'all',
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      legend: {
-        show: false,
+      dataLabels: { enabled: false },
+      xaxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Des'],
+        labels: { style: { fontSize: '13px', colors: '#adb0bb' } },
       },
       grid: {
-        show: true,
-        padding: {
-          top: 0,
-          bottom: 0,
-          right: 0,
-        },
-        borderColor: 'rgba(0,0,0,0.05)',
-        xaxis: {
-          lines: {
             show: true,
-          },
-        },
-        yaxis: {
-          lines: {
-            show: true,
-          },
-        },
-      },
+            borderColor: 'rgba(0,0,0,0.05)',
+            xaxis: {
+              lines: {
+                show: true,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: true,
+              },
+            },},
+      tooltip: { theme: 'light' },
+    }
+  }
 
-      yaxis: {
-        min: -5,
-        max: 5,
-        tickAmount: 4,
+  ngOnInit() {
+    const currentYear = new Date().getFullYear();
+    this.ReservationService.getMonthlyBookingsAndRevenue(currentYear).subscribe((data) => {
+      const monthlyData = this.processReservationsData(data);
+      const bookings = monthlyData.map(item => item.bookings);
+      console.log(`bookings: ${bookings}`);
+
+      const revenue = monthlyData.map(item => item.revenue);
+      console.log(`revenue: ${revenue}`);
+
+      this.revenueForecastChart = this.getChartOptions(bookings, revenue);
+      if (this.chart) {
+        this.chart.updateOptions(this.revenueForecastChart);
+      }
+
+    });
+  }
+
+
+  processReservationsData(reservations: any[]): { bookings: number, revenue: number }[] {
+    const monthlyStats = Array.from({ length: 12 }, () => ({ bookings: 0, revenue: 0 }));
+
+    reservations.forEach(reservation => {
+      const startDate = new Date(reservation.startDate);
+      const endDate = new Date(reservation.endDate);
+      const month = startDate.getMonth(); // الحصول على الشهر
+
+      monthlyStats[month].bookings += 1;
+      monthlyStats[month].revenue += reservation.totalPrice;
+    });
+
+    return monthlyStats;
+  }
+
+  getChartOptions(bookingsData: number[], revenueData: number[]) {
+    return {
+      series: [
+        { name: 'Count Resservations', data: bookingsData },
+        { name: 'Revenue Resservations', data: revenueData },
+      ],
+      chart: {
+        type: 'area',
+        fontFamily:'inherit',
+        foreColor: '#adb0bb',
+        height: 330,
+        stacked: true,
+        toolbar: { show: false },
       },
+      colors: ['rgba(99, 91, 255, 1)', 'rgba(255, 102, 146,1)'],
+      dataLabels: { enabled: false },
       xaxis: {
-        axisBorder: {
-          show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
-        categories: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'July',
-          'Aug',
-          'Sep',
-        ],
-        labels: {
-          style: { fontSize: '13px', colors: '#adb0bb', fontWeight: '400' },
-        },
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Des'],
+        labels: { style: { fontSize: '13px', colors: '#adb0bb' } },
       },
-      tooltip: {
-        theme: 'dark',
-        x: {
-          show: false,
-        },
-      },
+      grid: {
+            show: true,
+            borderColor: 'rgba(0,0,0,0.05)',
+            xaxis: {
+              lines: {
+                show: true,
+              },
+            },
+            yaxis: {
+              lines: {
+                show: true,
+              },
+            },},
+      tooltip: { theme: 'light' },
     };
   }
 }
