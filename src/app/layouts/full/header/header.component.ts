@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
 import { MaterialModule } from 'src/app/material.module';
 import { Router, RouterModule } from '@angular/router';
@@ -26,7 +27,7 @@ import Swal from 'sweetalert2';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   selectedLang:string ='en'
 
   @Input() showToggle = true;
@@ -34,20 +35,27 @@ export class HeaderComponent {
   @Output() toggleMobileNav = new EventEmitter<void>();
   @Output() toggleCollapsed = new EventEmitter<void>();
 
+  name:any=localStorage.getItem('name');
+  image:any=localStorage.getItem('image');
+  email:any=localStorage.getItem('email');
+  role:any=localStorage.getItem('role');
+
   constructor(private translate : TranslateService,
       private LanguageService:LanguageService, 
       private authService: AuthService,
       private router: Router
     ) {
-   this.translate.setDefaultLang('en')
-   this.LanguageService.currentLanguage.subscribe(lang=>{
-     this.selectedLang = lang
-     this.translate.use(lang)
-     const isRtl = lang === 'ar';
-    this.LanguageService.setLanguageDirection(isRtl)
-   })
+        this.translate.setDefaultLang('en')
+        this.LanguageService.currentLanguage.subscribe(lang=>{
+          this.selectedLang = lang
+          this.translate.use(lang)
+          const isRtl = lang === 'ar';
+          this.LanguageService.setLanguageDirection(isRtl)
+        })
+
     }
 
+    ngOnInit(): void {}
   switchlanguage(lang : string){
 
     this.LanguageService.changeLanguage(lang)
@@ -66,12 +74,6 @@ export class HeaderComponent {
 
 
   logout(){
-    // let confirmMsg = confirm('are you sure ? ')
-    // if(confirmMsg){
-    //   this.authService.logout()
-    //   this.router.navigate(['/authentication/login']);
-    // }
-
     Swal.fire({
       title: "Are You Sure?",
       customClass: {
@@ -97,5 +99,7 @@ export class HeaderComponent {
     });
 
   }
+
+
 
 }

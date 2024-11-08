@@ -17,6 +17,7 @@ export class AuthService {
   private tokenKey = 'token';
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
 
+
   isLoggedIn = this.isLoggedInSubject.asObservable();
   userRole: string | null = null;
 
@@ -28,20 +29,31 @@ export class AuthService {
   }
 
   login(credentials: { email: any; password: any }) {
-    return this.http.post<{ access_token: string }>(`${this.apiUrl}/auth/login`, credentials).pipe(
+    return this.http.post<{ access_token: string, firstName:string, lastName:string, image:string, email:string , roles:string}>(`${this.apiUrl}/auth/login`, credentials).pipe(
       tap((response) => {
+        console.log(credentials)
         console.log(response.access_token)
         this.setToken(response.access_token);
         this.setUserRole(response.access_token);
         this.isLoggedInSubject.next(true);
+        localStorage.setItem('name' , response.firstName+' '+response.lastName);
+        localStorage.setItem('image' , response.image)
+        localStorage.setItem('email' , response.email)
+        localStorage.setItem('role' , response.roles)
       })
     );
   }
+
+
 
   logout() {
     this.removeToken();
     this.isLoggedInSubject.next(false);
     this.userRole = null;
+    localStorage.removeItem('name')
+    localStorage.removeItem('image')
+    localStorage.removeItem('email')
+    localStorage.removeItem('role')
   }
 
   private setToken(token: string) {

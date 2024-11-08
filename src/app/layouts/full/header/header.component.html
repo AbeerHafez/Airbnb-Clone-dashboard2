@@ -69,36 +69,36 @@
     class="d-flex justify-content-center profile-btn-dd"
   >
     <img
-      src="/assets/images/profile/user-1.jpg"
+      [src]="image"
       class="rounded-circle object-cover icon-35 profile-dd"
       width="35"
     />
   </button>
   <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
-    <button mat-menu-item>
+    <div mat-menu-item > 
+      {{name}}
       <mat-icon class="d-flex align-items-center"
         ><i
           data-icon="solar:shield-user-line-duotone"
           class="iconify icon-22"
-        ></i></mat-icon
-      >My Profile
-    </button>
-    <button mat-menu-item>
+        ></i></mat-icon>
+    </div>
+    <div mat-menu-item>
       <mat-icon class="d-flex align-items-center"
         ><i
           data-icon="solar:user-id-line-duotone"
           class="iconify icon-22"
         ></i></mat-icon
-      >My Account
-    </button>
-    <button mat-menu-item>
+      >{{email}}
+    </div>
+    <div mat-menu-item>
       <mat-icon class="d-flex align-items-center"
         ><i
           data-icon="solar:checklist-minimalistic-line-duotone"
           class="iconify icon-22"
         ></i> </mat-icon
-      >My Task
-    </button>
+      >{{role}}
+    </div>
 
     <div class="p-x-12 m-t-12">
       <a
