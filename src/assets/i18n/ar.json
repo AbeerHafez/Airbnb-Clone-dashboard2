@@ -2,6 +2,8 @@
   "listing": "مسكن",
   "New Listing": "قائمة جديدة",
   "home": "الرئيسية",
+  "Ui Components":"المكونات",
+  "Dashboard":"الرسوم البيانية",
   "reviews": "التقييمات",
   "categories": "أقسام",
   "Login": "تسجيل الدخول",
@@ -10,6 +12,7 @@
   "Delete": "حذف",
   "verify": "تأكيد",
   "Cancel": "إلغاء",
+  "total Booking":"إجمالي الحجز",
   "Reviews": {
     "comments": "التعليقات",
     "rating": "التقييم",
@@ -80,5 +83,20 @@
     "password": "الباسورد",
     "role": "رول",
     "zip": "الكود"
+  },
+  "amenityForm": {
+    "Edit amenity": "تعديل وسائل الراحة",
+    "Add amenity": "إضافة وسائل الراحة",
+    "name english": "الأسم بالأنجليزية",
+    "name arabic": "الأسم بالعربية",
+    "description english":"الوصف بالأنجليزية",
+    "description arabic":"الوصف بالعربية"
+  },
+  "charts":{
+    "map":"المناطق الأكثر شيوعا",
+    "category":"عدد القوائم في الفئات",
+    "reservations":"عدد الحجوزات وإيراداتها",
+    "listing":"القوائم الأكثر شيوعا",
+    "income":"الدخل الأجمالي"
   }
 }

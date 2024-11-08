@@ -3,7 +3,7 @@ import { owner } from "./listing";
 
 export interface Reservations {
   userId: owner;
-  reservations:{
+  listingId:{
     title:string;
     price:number;
     _id:string;

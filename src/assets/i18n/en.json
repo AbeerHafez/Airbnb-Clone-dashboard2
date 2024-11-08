@@ -2,14 +2,17 @@
   "listing": "listing",
   "New Listing": "New Listing",
   "home": "Home",
+  "Ui Components":"Components",
+  "Dashboard":"Charts",
   "reviews": "Reviews",
   "categories": "Categories",
   "Login": "Login",
   "Add": "Add",
   "Edit": "Edit",
   "Delete": "Delete",
-  "verify": "Verify",
+  "verify": "verify",
   "Cancel": "Cancel",
+  "total Booking":"total Booking",
   "Reviews": {
     "comments": "Comments",
     "rating": "Rating",
@@ -80,5 +83,20 @@
     "password": "Password",
     "role": "Role",
     "zip": "Zip"
+  },
+  "amenityForm": {
+    "Edit amenity": "Edit Amenity",
+    "Add amenity": "Add Amenity",
+    "name english": "name By English",
+    "name arabic": "name By Arabic",
+    "description english":"Description By English",
+    "description arabic":"Description By Arabic"
+  },
+  "charts":{
+    "map":"Most Popular Areas",
+    "category":"Count Listing in Category",
+    "reservations":"Revenue & Number For Resservations",
+    "listing":"Most Popular Listings",
+    "income":"Total Income"
   }
 }

@@ -13,6 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatPaginatorModule , MatPaginator } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2';
+import { SpinnerComponent } from '../../spinner/spinner.component';
 
 @Component({
   selector: 'app-NewListing',
@@ -27,6 +28,7 @@ MatMenuModule,
 MaterialModule,
 TranslateModule,
 MatPaginatorModule,
+SpinnerComponent
   ],
   templateUrl: './NewListing.component.html',
   styleUrls: ['./NewListing.component.css']
@@ -39,15 +41,20 @@ export class NewListingComponent implements OnInit {
   pageIndex:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  loading:boolean=false;
+
   constructor(private ListingService: ListingService , private router:Router) { }
 
   ngOnInit() {
+    this.loading=true;
+
     this.getNewListing()
   }
 
   getNewListing(){
     this.ListingService.getAllListings().subscribe((data: Listing[]) => {
       this.listings = data.filter(listing => listing.verified === false);
+      this.loading = false
       console.log(this.listings);
 
     });
@@ -61,8 +68,8 @@ export class NewListingComponent implements OnInit {
   verifayListing(id:string){
     this.ListingService.verifayListing(id).subscribe(()=>{
       Swal.fire({
-        title: 'verifay!',
-        text: 'verifay successfully.',
+        title: 'verify!',
+        text: 'verify successfully.',
         icon: 'success',
         iconColor: '#e45555',
         confirmButtonText: 'OK',
@@ -74,7 +81,7 @@ export class NewListingComponent implements OnInit {
     console.error('error verifay', error);
     Swal.fire({
       title: 'Error!',
-      text: 'Error verifay',
+      text: 'Error verify',
       icon: 'error',
       iconColor: '#000000',
       confirmButtonText: 'OK',

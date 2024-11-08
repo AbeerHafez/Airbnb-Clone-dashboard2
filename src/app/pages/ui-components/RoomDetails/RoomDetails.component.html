@@ -1,3 +1,5 @@
+@if(!loading){
+
 <mat-card class="cardWithShadow">
   <mat-card-content>
     <mat-card-title class='text-primary'>{{"Details.Room Details"|translate}}</mat-card-title>
@@ -24,8 +26,8 @@
 
             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.category"|translate}}:
-              <span class="text-dark f-w-600">{{listing.category ||''}}</span>
-             </h6>
+              <span class="text-dark f-w-600">{{ listing.category.technicalName || '' }}</span>
+            </h6>
 
             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.Description"|translate}}:
@@ -39,12 +41,20 @@
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.address"|translate}}:
-              <span class="text-dark f-w-600">{{listing.address?.street ||''}},{{listing.address?.city ||''}},{{ listing.address?.country ||''}}</span>
+              <span class="text-dark f-w-600">{{listing.address.street ||''}},{{listing.address.city ||''}},{{ listing.address.country ||''}}</span>
              </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               <span class="text-dark f-w-600">{{"Details.beds"|translate}}: {{listing.beds ||''}}, {{"Details.bedrooms"|translate}}: {{listing.bedrooms ||''}},{{"Details.bathrooms"|translate}}: {{ listing.bathrooms ||''}}</span>
              </h6>
+
+             <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
+              Amenities:
+              <ul>
+                <li *ngFor="let amenity of listing.amenities">
+                  <span class="text-dark f-w-600">{{ amenity.name.en }}</span>
+                </li>
+              </ul>             </h6>
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.guests"|translate}}:
@@ -53,7 +63,7 @@
 
              <h6 class="mat-body-1 f-s-16  text-primary border-down-room">
               {{"Details.owner"|translate}}:
-              <span class="text-dark f-w-600"> {{ listing.owner?.firstName || "--" }} {{ listing.owner?.lastName || "--" }}</span>
+              <span class="text-dark f-w-600"> {{ listing.owner.firstName || "--" }} {{ listing.owner.lastName || "--" }}</span>
              </h6>
 
 
@@ -72,3 +82,10 @@
       </ng-container>
   </mat-card-content>
 </mat-card>
+}
+
+@if(loading){
+  <div class="d-flex justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+}

@@ -1,4 +1,4 @@
-<mat-card class="cardWithShadow theme-card">
+<mat-card class="cardWithShadow theme-card" [attr.dir]="isRtl?'rtl':'ltr'">
   <mat-card-header>
     <mat-card-title *ngIf="isEditMode" class="m-b-0">{{"categoryForm.Edit Category" | translate}}</mat-card-title>
     <mat-card-title *ngIf="!isEditMode" class="m-b-0">{{"categoryForm.Add Category" | translate}}</mat-card-title>
@@ -6,12 +6,25 @@
   <mat-card-content class="b-t-1">
     <form [formGroup]="categoryForm" (ngSubmit)="onSave()">
       <div class="row">
-        <div class="col-lg-6">
+
+        <div formGroupName="displayName" class="col-lg-6">
+
+        <div>
           <!-- input -->
           <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.name category" | translate}}</mat-label>
           <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input formControlName="displayName" matInput placeholder=" name category " />
+            <input formControlName="en" matInput placeholder=" name category " />
           </mat-form-field>
+        </div>
+
+        <div>
+          <!-- input -->
+          <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.name category" | translate}}</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input formControlName="ar" matInput placeholder="اسم الفئة " />
+          </mat-form-field>
+        </div>
+
         </div>
 
         <div class="col-lg-6">
@@ -26,7 +39,7 @@
           <!-- input -->
           <mat-label  class="f-w-600 m-b-8 d-block">{{"categoryForm.icon" | translate}}</mat-label>
           <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input formControlName="icon" [(ngModel)]="data.icon" matInput placeholder="icon " />
+            <input formControlName="icon"  matInput placeholder="icon " />
           </mat-form-field>
         </div>
 

@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MaterialModule } from 'src/app/material.module';
 import { CommonModule } from '@angular/common';
+import { SpinnerComponent } from '../../spinner/spinner.component';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MatPaginatorModule,TranslateModule,
     MatCardModule,MatTableModule,MaterialModule,
-    CommonModule
+    CommonModule,SpinnerComponent
   ],
   templateUrl: './reservations.component.html',
   styleUrl: './reservations.component.scss'
@@ -30,15 +31,21 @@ export class ReservationsComponent implements OnInit {
   pageIndex:number=0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  loading:boolean=false;
+
+
   constructor(private ReservationService:ReservationService, private SnackBar:MatSnackBar ) { }
 
   ngOnInit(): void {
+    this.loading=true;
+
     this.loadingReservation()
   }
 
   loadingReservation(){
     this.ReservationService.getAllReservations().subscribe((data:Reservations[])=>{
       this.reservations = data;
+      this.loading = false
       console.log(this.reservations);
 
     }, (error) => {

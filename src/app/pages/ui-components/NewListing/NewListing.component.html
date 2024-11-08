@@ -1,10 +1,12 @@
+@if(!loading){
+
 <mat-card class="cardWithShadow">
   <mat-card-content>
     <mat-card-title class='text-primary'>{{'New Listing'|translate}}</mat-card-title>
 
     <div class="d-flex flex-wrap justify-content-center" style="gap: 20px; ">
       <ng-container *ngFor="let element of pageniteListing">
-        <mat-card class="rounded-pull"  style="width: 340px;  overflow: hidden;">
+        <mat-card class="rounded-pull d-flex flex-column"  style="width: 340px;  overflow: hidden;">
           <mat-card-header class="p-0">
             <div class="d-flex align-items-center p-0 m-0">
               <img mat-card-image
@@ -16,7 +18,7 @@
             </div>
           </mat-card-header>
 
-          <mat-card-content>
+          <mat-card-content style="flex: 1;">
 
             <mat-card-title >
               {{ element.title ||'' }}
@@ -29,12 +31,12 @@
 
 
             <h6 class="mat-body-1 f-s-16 ">
-              <span class="text-dark me-4 f-w-600">{{ element.address?.country ||''}}</span>
+              <span class="text-dark me-4 f-w-600">{{ element?.address?.country ||''}}</span>
               <a class="viwe-more-link" (click)="goToDetails(element._id)"> view more </a>
             </h6>
           </mat-card-content>
 
-          <mat-card-actions>
+          <mat-card-actions  class="d-flex align-self-end">
               <button class="button-card bg-success" (click)="verifayListing(element._id)">
                 <mat-icon>check</mat-icon>
                 <span>{{"verify" | translate}}</span>
@@ -58,3 +60,10 @@
     </mat-paginator>
   </mat-card-content>
 </mat-card>
+}
+
+@if(loading){
+  <div class="d-flex justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+}

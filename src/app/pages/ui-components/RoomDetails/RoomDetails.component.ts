@@ -6,8 +6,10 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MaterialModule } from 'src/app/material.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { Listing } from 'src/app/models/listing';
 import * as L from 'leaflet'
 import Swal from 'sweetalert2';
+import { SpinnerComponent } from '../../spinner/spinner.component';
 
 @Component({
   selector: 'app-RoomDetails',
@@ -15,19 +17,26 @@ import Swal from 'sweetalert2';
   imports:[CommonModule,
      MatCardModule,
     MaterialModule,
-    TranslateModule],
+    TranslateModule,
+    SpinnerComponent
+  ],
   templateUrl: './RoomDetails.component.html',
   styleUrls: ['./RoomDetails.component.css']
 })
 export class RoomDetailsComponent implements OnInit   {
 
-  listing:any
+  listing:Listing
   currentPhotoIndex:number =0
   map:any
+
+  loading:boolean=false;
+
 
   constructor(private route:ActivatedRoute , private ListingService:ListingService , private router :Router ) { }
 
   ngOnInit() {
+    this.loading=true;
+
     const id  = this.route.snapshot.paramMap.get('id') || ''
     this.getDetails(id);
   }
@@ -35,6 +44,11 @@ export class RoomDetailsComponent implements OnInit   {
   getDetails(id:string):void{
     this.ListingService.getListingByID(id).subscribe((data)=>{
       this.listing = data
+      this.loading=false;
+
+      console.log(this.listing);
+      console.log(typeof this.listing.category);
+
       this.currentPhotoIndex=0
       if(this.listing && this.listing.location){
         setTimeout(()=>{
