@@ -8,7 +8,7 @@ import { Category } from '../models/category'
 })
 export class CategoryService {
 // apiUrl = "https://airbnb-clone-backend-opal.vercel.app/category"
-apiUrl="http://localhost:3000"
+apiUrl="http://localhost:3000/category"
 
 constructor(private http: HttpClient) { }
 
