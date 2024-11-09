@@ -14,6 +14,7 @@
   "Cancel": "إلغاء",
   "total Booking":"إجمالي الحجز",
   "Reviews": {
+        "reviews": "الملاحظات",
     "comments": "التعليقات",
     "rating": "التقييم",
     "createdAt": "انشئ في",
