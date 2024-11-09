@@ -148,7 +148,8 @@ export class AdminComponent {
               confirmButtonColor: '#e45555',
             });
             this.loadingAdmin()
-            window.location.reload()
+                this.ngOnInit()
+            // window.location.reload()
           },
           (err)=>{
             console.error('Error In Update Admin' , err);
@@ -190,7 +191,8 @@ export class AdminComponent {
                 confirmButtonColor: '#e45555',
               });
               this.loadingAdmin()
-              window.location.reload()
+                  this.ngOnInit()
+              // window.location.reload()
             },
           (error) => {
             console.error('Error Adding Admin', error);
