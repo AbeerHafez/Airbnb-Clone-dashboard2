@@ -50,11 +50,13 @@
                     <div class="d-flex justify-content-between" style="margin: 0 15px 15px 25px;">
                       <button  (click)="onEdit(element)" class="updateAndEdit" mat-stroked-button  >
                         <mat-icon>edit</mat-icon>
-                        <span>Edit</span>
+                                                <span>{{'Edit'|translate}}</span>
+<!--                         <span>Edit</span> -->
                       </button>
                       <button (click)="removeUser(element._id!)" class=" updateAndEdit" mat-stroked-button  >
                         <mat-icon>delete</mat-icon>
-                        <span>Delete</span>
+                                                <span>{{'Delete'|translate}}</span>
+<!--                         <span>Delete</span> -->
                       </button>
                     </div>
                 <!-- </mat-card-actions> -->
