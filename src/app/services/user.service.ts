@@ -27,7 +27,7 @@ apiUrl = "http://localhost:3000"
   }
 
   addAdmin(newAdmin:User):Observable<User>{
-    return this.httpClient.post<User>('${this.apiUrl}/user/', newAdmin)
+    return this.httpClient.post<User>('${this.apiUrl}/user', newAdmin)
   }
 
   deleteUser(id:string){
